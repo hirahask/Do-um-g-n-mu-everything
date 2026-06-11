@@ -2,116 +2,113 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rupesh & Hira 🤍</title>
+<title>Our Love Story 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
-    background: black;
-    color: white;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
 }
 
 /* FILM EFFECT */
 body::after {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: url('https://i.imgur.com/8KZtK0p.png');
-    opacity: 0.15;
-    pointer-events: none;
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('https://i.imgur.com/8KZtK0p.png');
+  opacity: 0.2;
 }
 
 /* HEADER */
 .header {
-    text-align: center;
-    padding: 30px;
-    font-size: 40px;
-    font-family: 'Great Vibes', cursive;
+  text-align: center;
+  font-size: 40px;
+  padding: 20px;
+  font-family: 'Great Vibes', cursive;
 }
 
 /* SLIDER */
-.slider {
-    position: relative;
-    height: 70vh;
-}
-
 .slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: 1.5s;
-}
-
-.slide.active {
-    opacity: 1;
+  display: none;
+  position: relative;
 }
 
 .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+}
+
+.active {
+  display: block;
 }
 
 .text {
-    position: absolute;
-    bottom: 20%;
-    width: 100%;
-    text-align: center;
-    font-size: 25px;
-}
-
-/* SECTIONS */
-.section {
-    padding: 40px;
-    text-align: center;
-}
-
-/* PLACES */
-.places img {
-    width: 80%;
-    border-radius: 15px;
-    margin-top: 10px;
-}
-
-/* SIGNATURE */
-.signature {
-    font-family: 'Great Vibes', cursive;
-    font-size: 40px;
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 26px;
+  font-family: 'Great Vibes', cursive;
 }
 
 /* HEARTS */
 .heart {
-    position: fixed;
-    color: pink;
-    animation: float 6s linear infinite;
+  position: fixed;
+  animation: float 5s linear infinite;
 }
 
 @keyframes float {
-    0% { transform: translateY(100vh); opacity: 1; }
-    100% { transform: translateY(-10vh); opacity: 0; }
+  from { transform: translateY(100vh); opacity:1;}
+  to { transform: translateY(-10vh); opacity:0;}
+}
+
+/* SECTION */
+.section {
+  padding: 40px;
+  text-align: center;
+}
+
+/* PLACES */
+.place {
+  margin: 20px;
+}
+.place img {
+  width: 90%;
+  border-radius: 15px;
+}
+
+/* LETTERS */
+.letters span {
+  font-size: 40px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* MESSAGE BOX */
+#message {
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: 'Great Vibes', cursive;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
 <audio id="music" loop>
-<source src="muzik.mp3" type="audio/mpeg">
+<source src="muzik.mp3">
 </audio>
 
 <div class="header">Rupesh & Hira 🤍</div>
 
 <!-- SLIDER -->
-<div class="slider">
-
 <div class="slide active">
 <img src="IMG_20260611_143512.jpg">
 <div class="text">You are my peace 💖</div>
@@ -127,47 +124,57 @@ body::after {
 <div class="text">I love you more every day 🤍</div>
 </div>
 
-</div>
-
 <!-- PLACES -->
 <div class="section">
 <h2>Places We Will Go 🌍</h2>
 
-<div class="places">
-<img src="https://source.unsplash.com/800x500/?finland"><p>Finland</p>
-<img src="https://source.unsplash.com/800x500/?maldives"><p>Maldives</p>
-<img src="https://source.unsplash.com/800x500/?france"><p>France</p>
-<img src="https://source.unsplash.com/800x500/?switzerland"><p>Switzerland</p>
-<img src="https://source.unsplash.com/800x500/?japan"><p>Japan</p>
-</div>
+<div class="place">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Lapland_Finland.jpg">
+<p>Finland</p>
 </div>
 
-<!-- STORY -->
+<div class="place">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Maldives_Island.jpg">
+<p>Maldives</p>
+</div>
+
+<div class="place">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Paris_Night.jpg">
+<p>France</p>
+</div>
+
+<div class="place">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Zermatt_Switzerland.jpg">
+<p>Switzerland</p>
+</div>
+
+<div class="place">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Tokyo_Tower.jpg">
+<p>Japan</p>
+</div>
+
+</div>
+
+<!-- LETTER SURPRISE -->
 <div class="section">
-<h2>Our Story 📖</h2>
+<h2>Open a Letter 💌</h2>
 
-<p>12.02.2026 - The moment everything started</p>
-<p>13.02.2026 - Our first conversation</p>
-<p>20.02.2026 - The first "I love you"</p>
-<p>27.03.2026 - "You are the best thing that has happened to me."</p>
+<div class="letters">
+<span onclick="showMessage()">💌</span>
+<span onclick="showMessage()">💌</span>
+<span onclick="showMessage()">💌</span>
+<span onclick="showMessage()">💌</span>
+<span onclick="showMessage()">💌</span>
 </div>
 
-<!-- LOVE -->
-<div class="section">
-<p>
-I love you more and more every day.<br><br>
-Sometimes we cry together, sometimes we laugh together.<br><br>
-But I swear I will always be by your side 🤍
-</p>
-
-<div class="signature">Rupesh & Hira</div>
+<div id="message"></div>
 </div>
 
 <script>
 
-/* MUSIC START */
+/* MUSIC */
 document.body.addEventListener("click", () => {
-    document.getElementById("music").play();
+  document.getElementById("music").play();
 });
 
 /* SLIDER */
@@ -175,24 +182,38 @@ let slides = document.querySelectorAll(".slide");
 let index = 0;
 
 setInterval(() => {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
 }, 4000);
 
 /* HEARTS */
 setInterval(() => {
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-    document.body.appendChild(heart);
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (20 + Math.random()*20) + "px";
+  document.body.appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
-}, 300);
+  setTimeout(()=>heart.remove(),5000);
+},300);
+
+/* LETTER MESSAGES */
+let messages = [
+"They say perfection doesn't exist, but then I look at you and realize they are wrong.",
+"I look at you and see the rest of my life in your eyes.",
+"You are my safe haven in this chaotic world.",
+"My heart is, and always will be, yours.",
+"You are the best thing that has ever been mine.",
+"Sometimes I wonder how I got so lucky to have you.",
+"You became the calm to my storm."
+];
+
+function showMessage() {
+  let random = messages[Math.floor(Math.random()*messages.length)];
+  document.getElementById("message").innerText = random;
+}
 
 </script>
 
