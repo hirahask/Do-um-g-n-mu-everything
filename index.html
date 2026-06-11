@@ -2,153 +2,198 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Our Story ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rupesh & Hira 🤍</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 body {
-  margin: 0;
-  font-family: 'Georgia', serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  color: white;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: black;
+    color: white;
+}
+
+/* FILM EFFECT */
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.imgur.com/8KZtK0p.png');
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 30px;
+    font-size: 40px;
+    font-family: 'Great Vibes', cursive;
 }
 
 /* SLIDER */
+.slider {
+    position: relative;
+    height: 70vh;
+}
+
 .slide {
-  height: 100vh;
-  position: relative;
-  display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 1.5s;
+}
+
+.slide.active {
+    opacity: 1;
 }
 
 .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(70%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .text {
-  position: absolute;
-  bottom: 20%;
-  width: 100%;
-  text-align: center;
-  font-size: 26px;
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
 }
 
-.active {
-  display: block;
-}
-
-/* SECTION */
+/* SECTIONS */
 .section {
-  padding: 60px 20px;
-  text-align: center;
+    padding: 40px;
+    text-align: center;
 }
 
+/* PLACES */
 .places img {
-  width: 90%;
-  border-radius: 20px;
-  margin: 10px 0;
+    width: 80%;
+    border-radius: 15px;
+    margin-top: 10px;
 }
 
-/* HANDWRITING */
+/* SIGNATURE */
 .signature {
-  font-family: 'Great Vibes', cursive;
-  font-size: 42px;
-  margin-top: 30px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+}
+
+/* HEARTS */
+.heart {
+    position: fixed;
+    color: pink;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- MUSIC -->
 <audio id="music" loop>
-  <source src="music.mp3" type="audio/mpeg">
+<source src="muzik.mp3" type="audio/mpeg">
 </audio>
 
-<!-- SLIDES -->
+<div class="header">Rupesh & Hira 🤍</div>
+
+<!-- SLIDER -->
+<div class="slider">
+
 <div class="slide active">
-  <img src="IMG_20260611_143512.jpg">
-  <div class="text">You are the best thing that has ever happened to me…</div>
+<img src="IMG_20260611_143512.jpg">
+<div class="text">You are my peace 💖</div>
 </div>
 
 <div class="slide">
-  <img src="IMG_20260611_143534.jpg">
-  <div class="text">And I have zero regret loving you</div>
+<img src="IMG_20260611_143625.jpg">
+<div class="text">Happy Birthday my squirrel 🐿️</div>
 </div>
 
 <div class="slide">
-  <img src="IMG_20260611_143554.jpg">
-  <div class="text">Every moment with you feels magical</div>
+<img src="IMG_20260611_143649.jpg">
+<div class="text">I love you more every day 🤍</div>
 </div>
 
-<div class="slide">
-  <img src="IMG_20260611_143612.jpg">
-  <div class="text">You are my peace, my happiness, my ruh</div>
-</div>
-
-<div class="slide">
-  <img src="IMG_20260611_143625.jpg">
-  <div class="text">Happy Birthday my squirrel 💕🐿️</div>
 </div>
 
 <!-- PLACES -->
 <div class="section">
-<h2>Places We Will Go Together 🌍</h2>
+<h2>Places We Will Go 🌍</h2>
 
 <div class="places">
-  <img src="https://source.unsplash.com/800x500/?finland">
-  <p>Finland</p>
-
-  <img src="https://source.unsplash.com/800x500/?maldives">
-  <p>Maldives</p>
-
-  <img src="https://source.unsplash.com/800x500/?paris">
-  <p>France</p>
-
-  <img src="https://source.unsplash.com/800x500/?switzerland">
-  <p>Switzerland</p>
-
-  <img src="https://source.unsplash.com/800x500/?japan">
-  <p>Japan</p>
+<img src="https://source.unsplash.com/800x500/?finland"><p>Finland</p>
+<img src="https://source.unsplash.com/800x500/?maldives"><p>Maldives</p>
+<img src="https://source.unsplash.com/800x500/?france"><p>France</p>
+<img src="https://source.unsplash.com/800x500/?switzerland"><p>Switzerland</p>
+<img src="https://source.unsplash.com/800x500/?japan"><p>Japan</p>
 </div>
 </div>
 
-<!-- MEMORIES -->
+<!-- STORY -->
 <div class="section">
-<h2>Our Story 📅</h2>
+<h2>Our Story 📖</h2>
 
-<p>12.02.2026 – That action which brought us together</p>
-<p>13.02.2026 – Our first conversation</p>
-<p>20.02.2026 – The first "I love you"</p>
-<p>27.03.2026 – You are the best thing that has happened to me</p>
+<p>12.02.2026 - The moment everything started</p>
+<p>13.02.2026 - Our first conversation</p>
+<p>20.02.2026 - The first "I love you"</p>
+<p>27.03.2026 - "You are the best thing that has happened to me."</p>
 </div>
 
-<!-- LOVE TEXT -->
+<!-- LOVE -->
 <div class="section">
 <p>
-I love you more and more every day.  
-Sometimes we will cry, sometimes we will laugh…  
-But I swear, I will always be by your side.
+I love you more and more every day.<br><br>
+Sometimes we cry together, sometimes we laugh together.<br><br>
+But I swear I will always be by your side 🤍
 </p>
 
-<div class="signature">Rupesh & Hira 🤍</div>
+<div class="signature">Rupesh & Hira</div>
 </div>
 
 <script>
+
+/* MUSIC START */
+document.body.addEventListener("click", () => {
+    document.getElementById("music").play();
+});
+
+/* SLIDER */
 let slides = document.querySelectorAll(".slide");
 let index = 0;
 
-document.body.addEventListener("click", () => {
-  document.getElementById("music").play();
-});
-
 setInterval(() => {
-  slides[index].classList.remove("active");
-  index = (index + 1) % slides.length;
-  slides[index].classList.add("active");
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
 }, 4000);
+
+/* HEARTS */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}, 300);
+
 </script>
 
 </body>
