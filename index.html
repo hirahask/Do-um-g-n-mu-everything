@@ -135,7 +135,7 @@ h1 {
 <body>
 
 <audio id="music" loop>
-<source src="muzik.mp3">
+<source src="music.mp3">
 </audio>
 
 <h1>Rupesh & Hira 🤍</h1>
@@ -262,52 +262,6 @@ function showMessage(){
 let random=messages[Math.floor(Math.random()*messages.length)];
 document.getElementById("message").innerText=random;
 }
-
-</script>
-
-/* 💖 Kalpler */
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "💖";
-  heart.style.left = Math.random() * 100 + "vw";
-  document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
-}
-
-setInterval(createHeart, 500);
-
-
-/* 💌 Mektup */
-function showMessage() {
-  const messages = [
-    "They say perfection doesn't exist, but then I look at you and realize they are wrong.",
-    "I look at you and see the rest of my life in your eyes.",
-    "You are my safe haven in this chaotic world.",
-    "My heart is, and always will be, yours.",
-    "You are the best thing that has ever been mine.",
-    "Sometimes I wonder how I got so lucky.",
-    "You became the calm to my storm."
-  ];
-
-  const msg = messages[Math.floor(Math.random() * messages.length)];
-  document.getElementById("message").innerText = msg;
-
-  // 💥 ekstra kalpler
-  for (let i = 0; i < 20; i++) {
-    setTimeout(createHeart, i * 100);
-  }
-}
-
-
-/* 🎵 Müzik */
-document.body.addEventListener("click", () => {
-  const music = document.getElementById("music");
-  if (music) music.play();
-});
 
 </script>
 </body>
