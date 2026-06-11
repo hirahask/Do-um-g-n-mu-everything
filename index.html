@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
 
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 3s;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.text {
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  text-shadow: 0 0 25px black;
+  animation: fade 4s ease-in-out;
+}
+
+@keyframes fade {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.active {
+  opacity: 1;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="slide active">
+  <img src="IMG_20260611_143512.jpg">
+  <div class="text">You came into my life when I didn’t even realize I needed someone…</div>
+</div>
+
+<div class="slide">
+  <img src="IMG_20260611_143534.jpg">
+  <div class="text">And somehow, you became everything to me</div>
+</div>
+
+<div class="slide">
+  <img src="IMG_20260611_143554.jpg">
+  <div class="text">Every moment with you feels like a dream</div>
+</div>
+
+<div class="slide">
+  <img src="IMG_20260611_143612.jpg">
+  <div class="text">In your smile, I found my peace</div>
+</div>
+
+<div class="slide">
+  <img src="IMG_20260611_143625.jpg">
+  <div class="text">In your eyes, I found my home</div>
+</div>
+
+<div class="slide">
+  <img src="IMG_20260611_143649.jpg">
+  <div class="text">You are my favorite story</div>
+</div>
+
+<div class="slide">
+  <img src="IMG_20260611_143706.jpg">
+  <div class="text">Happy Birthday, my squirrel 💕🐿️</div>
+</div>
+
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+document.body.addEventListener("click", () => {
+  document.getElementById("music").play();
+});
+
+setInterval(() => {
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
+}, 5000);
+</script>
+
+</body>
+</html>
