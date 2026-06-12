@@ -695,10 +695,12 @@ But I swear, I will always be by your side 🤍
     
 <!-- === MEKTUP KUTUSUNUN DIŞINDAKİ SÜRPRİZ ALANI === -->
 
-        <div class="surprise-section">
+            <div id="message"></div>
+
+    <div class="surprise-section">
 
         <div class="music-box">
-            <div class="vinyl-record"></div>
+            <div class="vinyl-record" onclick="toggleMusic()"></div>
             <div class="lyrics-title">OUR SONG 🎵</div>
             <div class="lyrics-text">
                 Tu agar meri, yeh hawayein teri<br>
@@ -727,6 +729,11 @@ But I swear, I will always be by your side 🤍
         </div>
 
     </div>
+
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    
 
     <script>
     const messages = [
