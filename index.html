@@ -6,6 +6,25 @@
     <title>Rupesh & Hira</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        .seal-container { margin: 60px auto; text-align: center; }
+.seal {
+    width: 60px; height: 60px; background: #8b0000; border-radius: 50%;
+    margin: 0 auto; cursor: pointer; border: 3px solid #ffd700;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5); transition: transform 0.3s;
+}
+.seal:hover { transform: scale(1.1); }
+.seal-inner { color: #ffd700; font-family: 'Great Vibes', cursive; font-size: 14px; }
+
+.scroll-paper {
+    max-width: 300px; margin: 20px auto; background: #e3c79a;
+    padding: 20px; border-radius: 5px; height: 0; overflow: hidden;
+    transition: height 1.5s ease-in-out; border: 2px solid #a07d4b;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3); position: relative;
+}
+.scroll-content { color: #3e2723; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; opacity: 0; transition: opacity 2s; }
+
+        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -286,7 +305,31 @@
         .scan-result { font-size: 14px; font-weight: 600; color: #ffb7dd; display: none; margin-top: 10px; line-height: 1.5; }
     </style>
 </head>
-<body>
+<div class="seal-container">
+    <div class="seal" onclick="openScroll()">
+        <div class="seal-inner"><span>R & H</span></div>
+    </div>
+    <div id="scroll-paper" class="scroll-paper">
+        <div class="scroll-content">
+            <p>I don’t love you as if you were a rose of salt, topaz,<br>
+            or arrow of carnations that propagate fire:<br>
+            I love you as one loves certain obscure things,<br>
+            secretly, between the shadow and the soul.<br><br>
+            I love you as the plant that doesn’t bloom but carries<br>
+            the light of those flowers, hidden, within itself,<br>
+            and thanks to your love the tight aroma that arose<br>
+            from the earth lives dimly in my body.<br><br>
+            I love you without knowing how, or when, or from where,<br>
+            I love you directly without problems or pride:<br>
+            I love you like this because I don’t know any other way to love,<br>
+            except in this form in which I am not nor are you,<br>
+            so close that your hand upon my chest is mine,<br>
+            so close that your eyes close with my dreams.</p>
+        </div>
+    </div>
+</div>
+    
+    <body>
 
     <h1>Rupesh & Hira 🤍</h1>
 
@@ -546,6 +589,18 @@
                 }
             }, 150);
         }
+        function openScroll() {
+    const scroll = document.getElementById("scroll-paper");
+    const content = document.querySelector(".scroll-content");
+    if (scroll.style.height === "auto") {
+        scroll.style.height = "0";
+        content.style.opacity = "0";
+    } else {
+        scroll.style.height = "auto";
+        setTimeout(() => { content.style.opacity = "1"; }, 500);
+    }
+        }
+        
     </script>
 </body>
                                                              </html>
