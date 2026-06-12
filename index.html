@@ -957,27 +957,37 @@ function showNextReason() {
 
 // Havada uçuşan kalpleri oluşturan fonksiyon
 function createHeartShower() {
+function createHeartShower() {
     const heartSymbols = ['❤️', '💖', '🤍', '✨', '💕', '⭐'];
-    
     for (let i = 0; i < 20; i++) {
         const heart = document.createElement('div');
-        heart.classList.add('heart-sparkle');
-        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-        
-        // Kalplerin ekranın en altından başlamasını sağlayan kritik ayarlar
         heart.style.position = 'fixed';
         heart.style.bottom = '-50px'; 
         heart.style.left = Math.random() * 100 + 'vw';
         heart.style.animationDelay = Math.random() * 0.6 + 's';
         heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+        heart.style.pointerEvents = 'none';
         
+        // --- İŞTE SİHİRLİ DÜZELTME BURASI ---
+        // Kalplerin fotoğrafların ve her şeyin en üstünde görünmesini sağlar:
+        heart.style.zIndex = '10000'; 
+        
+        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        
+        heart.animate([
+            { transform: 'translateY(0) scale(1)', opacity: 1 },
+            { transform: 'translateY(-105vh) scale(1.2)', opacity: 0 }
+        ], {
+            duration: 2500,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+
         document.body.appendChild(heart);
-        
-        setTimeout(() => {
-            heart.remove();
-        }, 2500);
+        setTimeout(() => { heart.remove(); }, 2500);
     }
-  }
+                          }
+      
   
 }
   // Geleceğe dair ortak dilekleriniz ve hayalleriniz
