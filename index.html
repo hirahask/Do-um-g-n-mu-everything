@@ -919,52 +919,95 @@ document.getElementById("message").innerText=random;
 </script>
   
 <script>
-function updateLoveCounter() {
-    // Mobil cihazların hatasız okuması için en güvenli format
-    var startDate = new Date("2026/12/02 00:00:00");February 12
-    var today = new Date();
-    
-    var timeDiff = today.getTime() - startDate.getTime();
-    var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    
-    if (!isNaN(daysDiff)) {
-        document.getElementById("love-days").innerText = daysDiff + " Days";
+const messages = [
+    "I look at you and see the rest of my life in your eyes.",
+    "You are my safe haven in this chaotic world, sevgilim.",
+    "My heart is, and always will be, yours.",
+    "You are the best thing that has ever been mine.",
+    "Sometimes I look at you and wonder how I got so lucky.",
+    "You became the calm to my storm, the light in my darkest nights."
+];
+
+function showMessage() {
+    let random = messages[Math.floor(Math.random() * messages.length)];
+    const msgElement = document.getElementById("message");
+    if (msgElement) {
+        msgElement.innerText = random;
     }
 }
 
-// Sayfa yüklendiği an sayacı çalışmaya zorlar
-document.addEventListener("DOMContentLoaded", function() {
-    updateLoveCounter();
-});
-  // Senin belirlediğin harika sözlerin profesyonel İngilizce çevirileri
+function updateLoveCounter() {
+    const startDate = new Date("2026-02-12T00:00:00");
+    const today = new Date();
+    const timeDiff = today - startDate;
+    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    
+    const counterElement = document.getElementById("love-days");
+    if (counterElement) {
+        counterElement.innerText = daysDiff + " Days";
+    }
+}
+updateLoveCounter();
+
+// --- BÜYÜK FOTOĞRAFLARIN (SLIDER) OTOMATİK GEÇİŞİ ---
+let currentSlideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showNextSlide() {
+    if (slides.length === 0) return;
+    slides[currentSlideIndex].classList.remove("active");
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    slides[currentSlideIndex].classList.add("active");
+}
+if (slides.length > 0) {
+    setInterval(showNextSlide, 3000); // 3 saniyede bir fotoğraflar değişir
+}
+
+// --- ARKA PLAN MÜZİK KONTROLÜ ---
+function toggleMusic() {
+    const audio = document.getElementById("music");
+    const record = document.querySelector(".vinyl-record");
+    
+    if (audio.paused) {
+        audio.play().catch(err => console.log("Müzik başlatılamadı."));
+        if (record) record.style.animationPlayState = "running";
+    } else {
+        audio.pause();
+        if (record) record.style.animationPlayState = "paused";
+    }
+}
+
+// Tarayıcıların otomatik oynatma engeline takılmamak için ilk tıklamada şarkıyı başlatma garantisi
+document.addEventListener('click', function() {
+    const audio = document.getElementById("music");
+    if (audio && audio.paused) {
+        audio.play().catch(e => {});
+    }
+}, { once: true });
+
+
+// --- 1. BUTON: SENİ NEDEN SEVİYORUM VE EN ÜSTTE UÇAN KALPLER ---
 const loveReasons = [
     "I love you because you are the only place where I find true peace... 🤍",
     "Because your smile is my absolute favorite view in the whole world... 🌸",
     "Because even in a room full of people, my eyes will always look for you... ✨",
     "Because you are my best friend, my husband, and my everything... 💍",
-    "We balance each other perfectly, just like fire and water... 🔥💧",
-    "Because loving you is the only and most beautiful thing I’ve ever done willingly... ❤️",
-    "Because being with you feels exactly like living in a beautiful fairy tale... 👑"
+    "We balance each other perfectly, just like fire and water... 🔥💧"
 ];
-
 let currentReasonIndex = 0;
 
 function showNextReason() {
-    // Sözü ekrana sırayla yazdırır
-    document.getElementById("reason-text").innerText = loveReasons[currentReasonIndex];
-    
-    // Her tıklandığında sihirli kalp yağmurunu tetikler
+    const reasonDisplay = document.getElementById("reason-text");
+    if (reasonDisplay) {
+        reasonDisplay.innerText = loveReasons[currentReasonIndex];
+    }
     createHeartShower();
-    
-    // Bir sonraki söze geçer, liste bitince başa döner
     currentReasonIndex = (currentReasonIndex + 1) % loveReasons.length;
 }
 
-// Havada uçuşan kalpleri oluşturan fonksiyon
-function createHeartShower() {
 function createHeartShower() {
     const heartSymbols = ['❤️', '💖', '🤍', '✨', '💕', '⭐'];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 25; i++) {
         const heart = document.createElement('div');
         heart.style.position = 'fixed';
         heart.style.bottom = '-50px'; 
@@ -973,15 +1016,14 @@ function createHeartShower() {
         heart.style.fontSize = Math.random() * 20 + 15 + 'px';
         heart.style.pointerEvents = 'none';
         
-        // --- İŞTE SİHİRLİ DÜZELTME BURASI ---
-        // Kalplerin fotoğrafların ve her şeyin en üstünde görünmesini sağlar:
-        heart.style.zIndex = '10000'; 
+        // Kalplerin kesinlikle tüm resimlerin ve mektupların ÖNÜNDE uçması için en üst katman kodu:
+        heart.style.zIndex = '99999'; 
         
         heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
         
         heart.animate([
             { transform: 'translateY(0) scale(1)', opacity: 1 },
-            { transform: 'translateY(-105vh) scale(1.2)', opacity: 0 }
+            { transform: 'translateY(-105vh) scale(1.3)', opacity: 0 }
         ], {
             duration: 2500,
             easing: 'linear',
@@ -991,96 +1033,41 @@ function createHeartShower() {
         document.body.appendChild(heart);
         setTimeout(() => { heart.remove(); }, 2500);
     }
-                          }
-      
-  
 }
-  // Geleceğe dair ortak dilekleriniz ve hayalleriniz
-const futureWishes = [
-    "Holding hands under the real Thailand sky... 🇹🇭",
-    "Chasing the Northern Lights together... 🌌",
-    "Building our warm, happy home... 🏡",
-    "Growing old and wrinkly together... 👵👴",
-    "Traveling to the edges of the world with you... ✈️",
-    "Loving each other more and more every single day... 💖",
-    "Always being your safe haven, forever... 🤍"
-];
 
-let wishIndex = 0;
-
-function releaseLantern() {
-    const lantern = document.createElement('div');
-    lantern.classList.add('flying-lantern');
-    
-    // Sıradaki dileği fenerin altına iliştiriyoruz
-    lantern.innerText = futureWishes[wishIndex];
-    
-    // Fenerin ekranın altından, rastgele bir yatay konumdan çıkmasını sağlıyoruz
-    lantern.style.bottom = '-60px';
-    lantern.style.left = Math.random() * 70 + 15 + 'vw'; // Ekranın kenarlarına çok sıkışmasın diye %15-%85 arası
-    
-    document.body.appendChild(lantern);
-    
-    // Bir sonraki tıklamada diğer dileğe geç, liste bitince başa dön
-    wishIndex = (wishIndex + 1) % futureWishes.length;
-    
-    // Animasyon bitince feneri kaldır (hafıza temizliği)
-    setTimeout(() => {
-        lantern.remove();
-    }, 6000);
-          }
-  let isScanning = false;
-
+// --- 2. BUTON: SİHİRLİ AŞK TARAYICI ---
+let isScanning = false;
 function startLoveScan() {
-    if (isScanning) return; // Eğer zaten tarıyorsa tekrar basılmasın
+    if (isScanning) return;
     isScanning = true;
-    
     const scanner = document.getElementById("scanner");
     const statusText = document.getElementById("scan-status");
     const resultText = document.getElementById("scan-result");
     
-    // Tarama efektini başlat
-    scanner.classList.add("scanning");
-    resultText.style.display = "none";
-    
+    if (scanner) scanner.classList.add("scanning");
+    if (resultText) resultText.style.display = "none";
     let percentage = 0;
     
-    // Yüzdeyi yavaş yavaş arttıran sayaç
     const scanInterval = setInterval(() => {
-        percentage += Math.floor(Math.random() * 8) + 2; // Rastgele 2-10 arası artar
-        
+        percentage += Math.floor(Math.random() * 8) + 2;
         if (percentage >= 100) {
             percentage = 100;
             clearInterval(scanInterval);
-            
-            // Tarama bittiğinde çalışacak alan
-            scanner.classList.remove("scanning");
-            statusText.innerText = "Scan Complete! ✔️";
-            
-            // Büyük aşk sonucunu göster
-            resultText.innerHTML = `
-                💖 %1,000,000 INFINITE LOVE! 💖<br>
-                <span style="color:#fff; font-size:13px; font-weight:normal; display:block; margin-top:8px;">
-                    Our souls are perfectly matched forever and ever. 💍
-                </span>
-            `;
-            resultText.style.display = "block";
-            
-            // Başarı şerefine ekrandan çılgınlar gibi kalpler uçur!
-            for(let i=0; i<3; i++) {
-                setTimeout(createHeartShower, i * 400);
+            if (scanner) scanner.classList.remove("scanning");
+            if (statusText) statusText.innerText = "Scan Complete! ✔️";
+            if (resultText) {
+                resultText.innerHTML = `💖 %1,000,000 INFINITE LOVE! 💖<br><span style="color:#fff; font-size:13px; font-weight:normal; display:block; margin-top:8px;">Our souls are perfectly matched forever and ever. 💍</span>`;
+                resultText.style.display = "block";
             }
-            
+            for(let i=0; i<3; i++) { setTimeout(createHeartShower, i * 400); }
             isScanning = false;
-        } else {
-            statusText.innerText = `Scanning Connection... %${percentage}`;
-            // Tarama sırasında da hafif kalpler fırlasın
-            if (percentage % 20 === 0) {
-                createHeartShower();
-            }
+        } else { 
+            if (statusText) statusText.innerText = `Scanning Connection... %${percentage}`;
+            if (percentage % 20 === 0) { createHeartShower(); }
         }
-    }, 150); // Tarama hızını ayarlar (150ms)
-}
+    }, 150);
+  }
+
   
 </script>
   
