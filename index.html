@@ -695,109 +695,7 @@ But I swear, I will always be by your side 🤍
     
 <!-- === MEKTUP KUTUSUNUN DIŞINDAKİ SÜRPRİZ ALANI === -->
 
-            <div id="message"></div>
-
-    <div class="surprise-section">
-
-        <div class="music-box">
-            <div class="vinyl-record" onclick="toggleMusic()"></div>
-            <div class="lyrics-title">OUR SONG 🎵</div>
-            <div class="lyrics-text">
-                Tu agar meri, yeh hawayein teri<br>
-                Tu agar meri, saari raahein teri<br>
-                Tu agar meri, main hoon tera<br>
-                Tu agar meri, yeh ujaale tere<br>
-                Tu agar meri, dil hawale tere<br>
-                Tu agar meri, main hoon tera
-            </div>
-        </div>
-
-        <div class="reason-box">
-            <button class="magic-btn" onclick="showNextReason()">Why do I love you? ✨</button>
-            <div id="reason-text" class="reason-display">Click the button to find out...</div>
-        </div>
-
-        <div class="scan-section">
-            <div class="scan-title">❤️ LOVE SCANNER ❤️</div>
-            <div class="scan-subtitle">Touch the heart to measure our love connection...</div>
-            <div class="scanner-container" id="scanner" onclick="startLoveScan()">
-                <div class="scanner-circle"></div>
-                <div class="scanner-heart">❤️</div>
-            </div>
-            <div id="scan-status" class="scan-status">Ready to scan...</div>
-            <div id="scan-result" class="scan-result"></div>
-        </div>
-
-    </div>
-
-    <audio id="music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-    
-
-    <script>
-    const messages = [
-        "I look at you and see the rest of my life in your eyes.",
-        "You are my safe haven in this chaotic world, sevgilim.",
-        "My heart is, and always will be, yours.",
-        "You are the best thing that has ever been mine.",
-        "Sometimes I look at you and wonder how I got so lucky.",
-        "You became the calm to my storm, the light in my darkest nights."
-    ];
-
-    function showMessage() {
-        let random = messages[Math.floor(Math.random() * messages.length)];
-        const msgElement = document.getElementById("message");
-        if (msgElement) {
-            msgElement.innerText = random;
-        }
-    }
-
-    function updateLoveCounter() {
-        const startDate = new Date("2026-02-12T00:00:00");
-        const today = new Date();
-        const timeDiff = today - startDate;
-        const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-        
-        const counterElement = document.getElementById("love-days");
-        if (counterElement) {
-            counterElement.innerText = daysDiff + " Days";
-        }
-    }
-
-    // Sayfa açıldığında sayacı çalıştır
-    updateLoveCounter();
-
-    // --- SÖZLER VE KALP YAĞMURU ---
-    const loveReasons = [
-        "I love you because you are the only place where I find true peace... 🤍",
-        "Because your smile is my absolute favorite view in the whole world... 🌸",
-        "Because even in a room full of people, my eyes will always look for you... ✨",
-        "Because you are my best friend, my husband, and my everything... 💍",
-        "We balance each other perfectly, just like fire and water... 🔥💧"
-    ];
-    let currentReasonIndex = 0;
-
-    function showNextReason() {
-        const reasonDisplay = document.getElementById("reason-text");
-        if (reasonDisplay) {
-            reasonDisplay.innerText = loveReasons[currentReasonIndex];
-        }
-        createHeartShower();
-        currentReasonIndex = (currentReasonIndex + 1) % loveReasons.length;
-    }
-
-    function createHeartShower() {
-        const heartSymbols = ['❤️', '💖', '🤍', '✨', '💕', '⭐'];
-        for (let i = 0; i < 20; i++) {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-sparkle');
-            heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-            heart.style.position = 'fixed';
-            heart.style.bottom = '-50px'; 
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDelay = Math.random() * 0.6 + 's';
-            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
             heart.style.pointerEvents = 'none';
             heart.style.zIndex = '9999';
             heart.style.animation = 'floatUp 2.5s linear forwards';
@@ -874,50 +772,46 @@ setInterval(showNextSlide, 3000);
 <script>
 
 /* MUSIC */
-document.body.addEventListener("click",()=>{
-document.getElementById("music").play();
-});
 
-/* SLIDER */
-let slides=document.querySelectorAll(".slide");
-let i=0;
+     <div id="message"></div>
 
-setInterval(()=>{
-slides[i].classList.remove("active");
-i=(i+1)%slides.length;
-slides[i].classList.add("active");
-},4000);
+    <div class="surprise-section">
 
-/* HEARTS (KESİN ÇALIŞIR) */
-setInterval(()=>{
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"vw";
-h.style.fontSize=(20+Math.random()*20)+"px";
-document.body.appendChild(h);
+        <div class="music-box">
+            <div class="vinyl-record" onclick="toggleMusic()"></div>
+            <div class="lyrics-title">OUR SONG 🎵</div>
+            <div class="lyrics-text">
+                Tu agar meri, yeh hawayein teri<br>
+                Tu agar meri, saari raahein teri<br>
+                Tu agar meri, main hoon tera<br>
+                Tu agar meri, yeh ujaale tere<br>
+                Tu agar meri, dil hawale tere<br>
+                Tu agar meri, main hoon tera
+            </div>
+        </div>
 
-setTimeout(()=>h.remove(),6000);
-},200);
+        <div class="reason-box">
+            <button class="magic-btn" onclick="showNextReason()">Why do I love you? ✨</button>
+            <div id="reason-text" class="reason-display">Click the button to find out...</div>
+        </div>
 
-/* FULL SENİN SÖZLER */
-let messages=[
-"They say perfection doesn't exist, but then I look at you and realize they are wrong.",
-"I look at you and see the rest of my life in your eyes.",
-"You are my safe haven in this chaotic world, and being in your arms feels like home.",
-"My heart is, and always will be, yours.",
-"You are the best thing that has ever been mine.",
-"Sometimes I look at you and wonder how I got so lucky to have someone who heals my soul just by existing.",
-"You became the calm to my storm, the light in my darkest nights, and the melody my heart always sings."
-];
+        <div class="scan-section">
+            <div class="scan-title">❤️ LOVE SCANNER ❤️</div>
+            <div class="scan-subtitle">Touch the heart to measure our love connection...</div>
+            <div class="scanner-container" id="scanner" onclick="startLoveScan()">
+                <div class="scanner-circle"></div>
+                <div class="scanner-heart">❤️</div>
+            </div>
+            <div id="scan-status" class="scan-status">Ready to scan...</div>
+            <div id="scan-result" class="scan-result"></div>
+        </div>
 
-function showMessage(){
-let random=messages[Math.floor(Math.random()*messages.length)];
-document.getElementById("message").innerText=random;
-}
+    </div>
 
-</script>
-  
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
 <script>
 const messages = [
     "I look at you and see the rest of my life in your eyes.",
@@ -949,7 +843,7 @@ function updateLoveCounter() {
 }
 updateLoveCounter();
 
-// --- BÜYÜK FOTOĞRAFLARIN (SLIDER) OTOMATİK GEÇİŞİ ---
+// --- BÜYÜK FOTOĞRAFLARIN (SLIDER) OTOMATİK DÖNME MOTORU ---
 let currentSlideIndex = 0;
 const slides = document.querySelectorAll(".slide");
 
@@ -960,7 +854,7 @@ function showNextSlide() {
     slides[currentSlideIndex].classList.add("active");
 }
 if (slides.length > 0) {
-    setInterval(showNextSlide, 3000); // 3 saniyede bir fotoğraflar değişir
+    setInterval(showNextSlide, 3000); // Slaytlar her 3 saniyede bir otomatik döner
 }
 
 // --- ARKA PLAN MÜZİK KONTROLÜ ---
@@ -977,7 +871,7 @@ function toggleMusic() {
     }
 }
 
-// Tarayıcıların otomatik oynatma engeline takılmamak için ilk tıklamada şarkıyı başlatma garantisi
+// İlk tıklamada müziği otomatik tetikleme garantisi
 document.addEventListener('click', function() {
     const audio = document.getElementById("music");
     if (audio && audio.paused) {
@@ -986,7 +880,7 @@ document.addEventListener('click', function() {
 }, { once: true });
 
 
-// --- 1. BUTON: SENİ NEDEN SEVİYORUM VE EN ÜSTTE UÇAN KALPLER ---
+// --- 1. BUTON: SENİ NEDEN SEVİYORUM VE EN ÜST KATMAN KALPLER ---
 const loveReasons = [
     "I love you because you are the only place where I find true peace... 🤍",
     "Because your smile is my absolute favorite view in the whole world... 🌸",
@@ -1016,8 +910,8 @@ function createHeartShower() {
         heart.style.fontSize = Math.random() * 20 + 15 + 'px';
         heart.style.pointerEvents = 'none';
         
-        // Kalplerin kesinlikle tüm resimlerin ve mektupların ÖNÜNDE uçması için en üst katman kodu:
-        heart.style.zIndex = '99999'; 
+        // Fotoğrafların, videoların ve mektupların kesinlikle üstünde uçması için en yüksek katman:
+        heart.style.zIndex = '999999'; 
         
         heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
         
@@ -1061,16 +955,12 @@ function startLoveScan() {
             }
             for(let i=0; i<3; i++) { setTimeout(createHeartShower, i * 400); }
             isScanning = false;
-        } else { 
+        } else {
             if (statusText) statusText.innerText = `Scanning Connection... %${percentage}`;
             if (percentage % 20 === 0) { createHeartShower(); }
         }
     }, 150);
-  }
-
-  
+}
 </script>
-  
-  
 </body>
 </html>
