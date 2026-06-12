@@ -188,7 +188,122 @@ img:hover {
     color: pink;
     text-shadow: 0 0 10px rgba(255, 192, 203, 0.6);
 }
-  
+  /* --- SÜRPRİZ ALANI TASARIMLARI --- */
+.surprise-section {
+    text-align: center;
+    margin: 60px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* 2. FİKİR: Dönen Müzik Plağı ve Şarkı Sözleri */
+.music-box {
+    margin-bottom: 40px;
+    background: rgba(255, 192, 203, 0.05);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 192, 203, 0.1);
+}
+
+.vinyl-record {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #000 30%, #333 40%, #111 50%, #000 70%);
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    position: relative;
+    border: 2px solid pink;
+    box-shadow: 0 0 15px rgba(255, 192, 203, 0.4);
+    /* Plağın sürekli ve yavaşça dönmesini sağlayan animasyon */
+    animation: spinRecord 6s linear infinite;
+}
+
+.vinyl-record::after {
+    content: '🤍';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+}
+
+@keyframes spinRecord {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.lyrics-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: pink;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.lyrics-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #ddd;
+    line-height: 1.8;
+}
+
+/* 3. FİKİR: "Seni Neden Seviyorum" Butonu ve Yazısı */
+.reason-box {
+    margin-top: 30px;
+}
+
+.magic-btn {
+    background: transparent;
+    border: 1px solid pink;
+    color: pink;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 192, 203, 0.1);
+}
+
+.magic-btn:hover {
+    background: pink;
+    color: #0a050a;
+    box-shadow: 0 0 20px pink;
+}
+
+.reason-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 20px;
+    min-height: 50px;
+    padding: 0 15px;
+    line-height: 1.6;
+    text-shadow: 0 0 5px rgba(255, 192, 203, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* 1. FİKİR: Ekrandan Yağacak Sihirli Kalplerin Efekti */
+.heart-sparkle {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatUp 2.5s linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+    }
+  }
+
 </style>
   
 <meta charset="UTF-8">
@@ -395,6 +510,29 @@ But I swear, I will always be by your side 🤍
 </div>
 
 <div id="message"></div>
+
+  <div class="surprise-section">
+    
+<div class="music-box">
+        <div class="vinyl-record"></div>
+        <div class="lyrics-title">OUR SONG 🎵</div>
+        <div class="lyrics-text">
+            Tu agar meri, yeh hawayein teri<br>
+            Tu agar meri, saari raahein teri<br>
+            Tu agar meri, main hoon tera<br>
+            Tu agar meri, yeh ujaale tere<br>
+            Tu agar meri, dil hawale tere<br>
+            Tu agar meri, main hoon tera
+  </div>
+    </div>
+
+    <div class="reason-box">
+        <button class="magic-btn" onclick="showNextReason()">Why do I love you? ✨</button>
+        <div id="reason-text" class="reason-display">Click the button to find out...</div>
+    </div>
+
+  </div>
+  
 </div>
   
 <audio id="music" loop>
@@ -466,6 +604,53 @@ function updateLoveCounter() {
 document.addEventListener("DOMContentLoaded", function() {
     updateLoveCounter();
 });
+  // Senin belirlediğin harika sözlerin profesyonel İngilizce çevirileri
+const loveReasons = [
+    "I love you because you are the only place where I find true peace... 🤍",
+    "Because your smile is my absolute favorite view in the whole world... 🌸",
+    "Because even in a room full of people, my eyes will always look for you... ✨",
+    "Because you are my best friend, my husband, and my everything... 💍",
+    "We balance each other perfectly, just like fire and water... 🔥💧",
+    "Because loving you is the only and most beautiful thing I’ve ever done willingly... ❤️",
+    "Because being with you feels exactly like living in a beautiful fairy tale... 👑"
+];
+
+let currentReasonIndex = 0;
+
+function showNextReason() {
+    // Sözü ekrana sırayla yazdırır
+    document.getElementById("reason-text").innerText = loveReasons[currentReasonIndex];
+    
+    // Her tıklandığında sihirli kalp yağmurunu tetikler
+    createHeartShower();
+    
+    // Bir sonraki söze geçer, liste bitince başa döner
+    currentReasonIndex = (currentReasonIndex + 1) % loveReasons.length;
+}
+
+// Havada uçuşan kalpleri oluşturan fonksiyon
+function createHeartShower() {
+    const heartSymbols = ['❤️', '💖', '🤍', '✨', '💕'];
+    
+    for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-sparkle');
+        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        
+        // Kalplerin rastgele yerlerden ve farklı boyutlarda çıkmasını sağlar
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDelay = Math.random() * 0.5 + 's';
+        heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+        
+        document.body.appendChild(heart);
+        
+        // Animasyon bitince kalbi siler ki sayfa kasmasın
+        setTimeout(() => {
+            heart.remove();
+        }, 2500);
+    }
+}
+  
 </script>
   
   
