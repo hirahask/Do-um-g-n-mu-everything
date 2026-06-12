@@ -720,46 +720,176 @@ But I swear, I will always be by your side 🤍
     
 <!-- === MEKTUP KUTUSUNUN DIŞINDAKİ SÜRPRİZ ALANI === -->
 
-<!-- 2. FİKİR: Dönen Müzik Plağı ve Şarkı Sözleri -->
-<div class="music-box">
-  <div class="vinyl-record"></div>
-  <div class="lyrics-title">OUR SONG 🎵</div>
-  <div class="lyrics-text">
-    Tu agar meri, yeh hawayein teri<br>
-    Tu agar meri, saari raahein teri<br>
-    Tu agar meri, main hoon tera<br>
-    Tu agar meri, yeh ujaale tere<br>
-    Tu agar meri, dil hawale tere<br>
-    Tu agar meri, main hoon tera
-  </div>
-</div>
+        <div class="surprise-section">
 
-<!-- 3. FİKİR: Seni Neden Seviyorum Alanı -->
-<div class="reason-box">
-  <button class="magic-btn" onclick="showNextReason()">Why do I love you? ✨</button>
-  <div id="reason-text" class="reason-display">Click the button to find out...</div>
-</div>
-
-<!-- Tayland Dilek Feneri Alanı -->
-<div class="lantern-section">
-  <div class="lantern-title">🏮 LANTERN FESTIVAL FOR US 🏮</div>
-  <div class="lantern-subtitle">One day, we will release these for real in Thailand. Until then, send a wish to our sky...</div>
-  <button class="lantern-btn" onclick="releaseLantern()">Release a Wish ✨</button>
-</div>
-
-<!-- ============================================= -->
-      <div class="scan-section">
-        <div class="scan-title">❤️ LOVE SCANNER ❤️</div>
-        <div class="scan-subtitle">Touch the heart to measure our love connection...</div>
-        
-        <div class="scanner-container" id="scanner" onclick="startLoveScan()">
-            <div class="scanner-circle"></div>
-            <div class="scanner-heart">❤️</div>
+        <div class="music-box">
+            <div class="vinyl-record"></div>
+            <div class="lyrics-title">OUR SONG 🎵</div>
+            <div class="lyrics-text">
+                Tu agar meri, yeh hawayein teri<br>
+                Tu agar meri, saari raahein teri<br>
+                Tu agar meri, main hoon tera<br>
+                Tu agar meri, yeh ujaale tere<br>
+                Tu agar meri, dil hawale tere<br>
+                Tu agar meri, main hoon tera
+            </div>
         </div>
+
+        <div class="reason-box">
+            <button class="magic-btn" onclick="showNextReason()">Why do I love you? ✨</button>
+            <div id="reason-text" class="reason-display">Click the button to find out...</div>
+        </div>
+
+        <div class="lantern-section">
+            <div class="lantern-title">🏮 LANTERN FESTIVAL FOR US 🏮</div>
+            <div class="lantern-subtitle">One day, we will release these for real in Thailand. Until then, send a wish to our sky...</div>
+            <button class="lantern-btn" onclick="releaseLantern()">Release a Wish ✨</button>
+        </div>
+
+        <div class="scan-section">
+            <div class="scan-title">❤️ LOVE SCANNER ❤️</div>
+            <div class="scan-subtitle">Touch the heart to measure our love connection...</div>
+            <div class="scanner-container" id="scanner" onclick="startLoveScan()">
+                <div class="scanner-circle"></div>
+                <div class="scanner-heart">❤️</div>
+            </div>
+            <div id="scan-status" class="scan-status">Ready to scan...</div>
+            <div id="scan-result" class="scan-result"></div>
+        </div>
+
+    </div>
+
+    <script>
+    const messages = [
+        "I look at you and see the rest of my life in your eyes.",
+        "You are my safe haven in this chaotic world, sevgilim.",
+        "My heart is, and always will be, yours.",
+        "You are the best thing that has ever been mine.",
+        "Sometimes I look at you and wonder how I got so lucky.",
+        "You became the calm to my storm, the light in my darkest nights."
+    ];
+
+    function showMessage() {
+        let random = messages[Math.floor(Math.random() * messages.length)];
+        const msgElement = document.getElementById("message");
+        if (msgElement) {
+            msgElement.innerText = random;
+        }
+    }
+
+    function updateLoveCounter() {
+        const startDate = new Date("2026-02-12T00:00:00");
+        const today = new Date();
+        const timeDiff = today - startDate;
+        const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
         
-        <div id="scan-status" class="scan-status">Ready to scan...</div>
-        <div id="scan-result" class="scan-result"></div>
-      </div>
+        const counterElement = document.getElementById("love-days");
+        if (counterElement) {
+            counterElement.innerText = daysDiff + " Days";
+        }
+    }
+
+    // Sayfa açıldığında sayacı çalıştır
+    updateLoveCounter();
+
+    // --- SÖZLER VE KALP YAĞMURU ---
+    const loveReasons = [
+        "I love you because you are the only place where I find true peace... 🤍",
+        "Because your smile is my absolute favorite view in the whole world... 🌸",
+        "Because even in a room full of people, my eyes will always look for you... ✨",
+        "Because you are my best friend, my husband, and my everything... 💍",
+        "We balance each other perfectly, just like fire and water... 🔥💧"
+    ];
+    let currentReasonIndex = 0;
+
+    function showNextReason() {
+        const reasonDisplay = document.getElementById("reason-text");
+        if (reasonDisplay) {
+            reasonDisplay.innerText = loveReasons[currentReasonIndex];
+        }
+        createHeartShower();
+        currentReasonIndex = (currentReasonIndex + 1) % loveReasons.length;
+    }
+
+    function createHeartShower() {
+        const heartSymbols = ['❤️', '💖', '🤍', '✨', '💕', '⭐'];
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-sparkle');
+            heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.position = 'fixed';
+            heart.style.bottom = '-50px'; 
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 0.6 + 's';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '9999';
+            heart.style.animation = 'floatUp 2.5s linear forwards';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 2500);
+        }
+    }
+
+    // --- DİLEK FENERİ ---
+    const futureWishes = [
+        "Holding hands under the real Thailand sky... 🇹🇭",
+        "Chasing the Northern Lights together... 🌌",
+        "Building our warm, happy home... 🏡",
+        "Growing old and wrinkly together... 👵👴"
+    ];
+    let wishIndex = 0;
+
+    function releaseLantern() {
+        const lantern = document.createElement('div');
+        lantern.classList.add('flying-lantern');
+        lantern.innerText = futureWishes[wishIndex];
+        lantern.style.position = 'fixed';
+        lantern.style.bottom = '-60px';
+        lantern.style.left = Math.random() * 70 + 15 + 'vw';
+        lantern.style.pointerEvents = 'none';
+        lantern.style.zIndex = '9999';
+        lantern.style.animation = 'lanternFloat 6s ease-in forwards';
+        document.body.appendChild(lantern);
+        wishIndex = (wishIndex + 1) % futureWishes.length;
+        setTimeout(() => { lantern.remove(); }, 6000);
+    }
+
+    // --- LOVE SCANNER ---
+    let isScanning = false;
+    function startLoveScan() {
+        if (isScanning) return;
+        isScanning = true;
+        const scanner = document.getElementById("scanner");
+        const statusText = document.getElementById("scan-status");
+        const resultText = document.getElementById("scan-result");
+        
+        scanner.classList.add("scanning");
+        if (resultText) resultText.style.display = "none";
+        let percentage = 0;
+        
+        const scanInterval = setInterval(() => {
+            percentage += Math.floor(Math.random() * 8) + 2;
+            if (percentage >= 100) {
+                percentage = 100;
+                clearInterval(scanInterval);
+                scanner.classList.remove("scanning");
+                if (statusText) statusText.innerText = "Scan Complete! ✔️";
+                if (resultText) {
+                    resultText.innerHTML = `💖 %1,000,000 INFINITE LOVE! 💖<br><span style="color:#fff; font-size:13px; font-weight:normal; display:block; margin-top:8px;">Our souls are perfectly matched forever and ever. 💍</span>`;
+                    resultText.style.display = "block";
+                }
+                for(let i=0; i<3; i++) { setTimeout(createHeartShower, i * 400); }
+                isScanning = false;
+            } else {
+                if (statusText) statusText.innerText = `Scanning Connection... %${percentage}`;
+                if (percentage % 20 === 0) { createHeartShower(); }
+            }
+        }, 150);
+    }
+    </script>
+</body>
+  </html>
+    
     
 </div>
   
