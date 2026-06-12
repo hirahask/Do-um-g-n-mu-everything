@@ -173,6 +173,26 @@
             margin: 20px auto;
             max-width: 320px;
         }
+                /* VİDEO İÇİN ROMANTİK IŞIK VE ÇERÇEVE */
+        video {
+            width: 85%;
+            max-width: 350px;
+            border-radius: 15px;
+            margin: 15px auto;
+            display: block;
+            /* Hafif pembe/beyaz romantik bir parıltı (glow) */
+            box-shadow: 0 0 15px rgba(255, 183, 221, 0.4), 0 0 30px rgba(255, 71, 126, 0.2);
+            /* İnce, zarif bir çerçeve */
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        /* Videonun üzerine gelince hafif büyüme efekti */
+        video:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 183, 221, 0.6);
+        }
+        
 
         /* MEKTUP KUTUSU */
         .letters-container {
