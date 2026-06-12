@@ -332,28 +332,17 @@
         }
         .scan-status { font-size: 12px; opacity: 0.8; margin-bottom: 5px; }
         .scan-result { font-size: 14px; font-weight: 600; color: #ffb7dd; display: none; margin-top: 10px; line-height: 1.5; }
+
+        /* DÜĞÜMÜ SAYFANIN EN DİBİNE İTMEK İÇİN */
+#knot-container {
+    margin: 100px auto 50px auto !important;
+    padding-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Aradaki ayrımı belirginleştirir */
+}
+        
     </style>
 </head>
-<div class="seal-container">
-    <div class="seal" onclick="openScroll()">
-        <div class="seal-inner">R & H</div>
-    </div>
-    <div id="scroll-paper" class="scroll-paper">
-        <div class="scroll-content">
-            <p style="font-style: italic;">I don’t love you as if you were a rose of salt, topaz,<br>
-            or arrow of carnations that propagate fire:<br>
-            I love you as one loves certain obscure things,<br>
-            secretly, between the shadow and the soul...</p>
-            <p>I love you without knowing how, or when, or from where,<br>
-            I love you directly without problems or pride:<br>
-            I love you like this because I don’t know any other way to love,<br>
-            except in this form in which I am not nor are you,<br>
-            so close that your hand upon my chest is mine,<br>
-            so close that your eyes close with my dreams.</p>
-        </div>
-    </div>
-</div>
-    <!-- KADER DÜĞÜMÜ ALANI -->
+        <!-- KADER DÜĞÜMÜ ALANI -->
 <div id="knot-container" style="position: relative; height: 300px; margin: 40px auto; touch-action: none;">
     <canvas id="knotCanvas"></canvas>
     <div style="position: absolute; top: 40%; width: 100%; pointer-events: none; font-family: 'Great Vibes'; font-size: 24px; color: #d4af37;">
@@ -388,6 +377,25 @@ function drawKnot(x, y) {
 }
 drawKnot();
 </script>
+<div class="seal-container">
+    <div class="seal" onclick="openScroll()">
+        <div class="seal-inner">R & H</div>
+    </div>
+    <div id="scroll-paper" class="scroll-paper">
+        <div class="scroll-content">
+            <p style="font-style: italic;">I don’t love you as if you were a rose of salt, topaz,<br>
+            or arrow of carnations that propagate fire:<br>
+            I love you as one loves certain obscure things,<br>
+            secretly, between the shadow and the soul...</p>
+            <p>I love you without knowing how, or when, or from where,<br>
+            I love you directly without problems or pride:<br>
+            I love you like this because I don’t know any other way to love,<br>
+            except in this form in which I am not nor are you,<br>
+            so close that your hand upon my chest is mine,<br>
+            so close that your eyes close with my dreams.</p>
+        </div>
+    </div>
+</div>
     
     <body>
 
