@@ -799,29 +799,7 @@ But I swear, I will always be by your side 🤍
         }
     }
 
-    // --- DİLEK FENERİ ---
-    const futureWishes = [
-        "Holding hands under the real Thailand sky... 🇹🇭",
-        "Chasing the Northern Lights together... 🌌",
-        "Building our warm, happy home... 🏡",
-        "Growing old and wrinkly together... 👵👴"
-    ];
-    let wishIndex = 0;
 
-    function releaseLantern() {
-        const lantern = document.createElement('div');
-        lantern.classList.add('flying-lantern');
-        lantern.innerText = futureWishes[wishIndex];
-        lantern.style.position = 'fixed';
-        lantern.style.bottom = '-60px';
-        lantern.style.left = Math.random() * 70 + 15 + 'vw';
-        lantern.style.pointerEvents = 'none';
-        lantern.style.zIndex = '9999';
-        lantern.style.animation = 'lanternFloat 6s ease-in forwards';
-        document.body.appendChild(lantern);
-        wishIndex = (wishIndex + 1) % futureWishes.length;
-        setTimeout(() => { lantern.remove(); }, 6000);
-    }
 
     // --- LOVE SCANNER ---
     let isScanning = false;
@@ -855,6 +833,26 @@ But I swear, I will always be by your side 🤍
             }
         }, 150);
     }
+      // --- BÜYÜK FOTOĞRAFLARIN (SLIDER) OTOMATİK DÖNMESİ ---
+let currentSlideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showNextSlide() {
+    if (slides.length === 0) return;
+    
+    // Mevcut aktif slayttan "active" sınıfını kaldırır
+    slides[currentSlideIndex].classList.remove("active");
+    
+    // Bir sonraki slayta geçer, liste bitince başa döner
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    
+    // Yeni slayta "active" sınıfını ekleyerek görünür yapar
+    slides[currentSlideIndex].classList.add("active");
+}
+
+// Fotoğrafların her 3 saniyede (3000 milisaniye) bir kendiliğinden değişmesini sağlar
+setInterval(showNextSlide, 3000);
+      
     </script>
 </body>
   </html>
