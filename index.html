@@ -130,6 +130,23 @@ body::before {
     color: #0a050a;
     box-shadow: 0 0 15px pink;
 }
+  /* Kalplerin aşağıdan yukarıya doğru uçmasını ve dönmesini sağlayan CSS animasyonu */
+@keyframes floatUp {
+    0% {
+        transform: translateY(105vh) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Kalpler ekranın altından çıkarken yavaşça belirsin */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.3) rotate(360deg);
+        opacity: 0; /* Ekranın en üstüne ulaştığında tamamen kaybolsun */
+    }
+}
 
 /* Canlı ve romantik arka plan efekti */
 body {
@@ -630,25 +647,28 @@ function showNextReason() {
 
 // Havada uçuşan kalpleri oluşturan fonksiyon
 function createHeartShower() {
-    const heartSymbols = ['❤️', '💖', '🤍', '✨', '💕'];
+    const heartSymbols = ['❤️', '💖', '🤍', '✨', '💕', '⭐'];
     
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 20; i++) {
         const heart = document.createElement('div');
         heart.classList.add('heart-sparkle');
         heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
         
-        // Kalplerin rastgele yerlerden ve farklı boyutlarda çıkmasını sağlar
+        // Kalplerin ekranın en altından başlamasını sağlayan kritik ayarlar
+        heart.style.position = 'fixed';
+        heart.style.bottom = '-50px'; 
         heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDelay = Math.random() * 0.5 + 's';
-        heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+        heart.style.animationDelay = Math.random() * 0.6 + 's';
+        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
         
         document.body.appendChild(heart);
         
-        // Animasyon bitince kalbi siler ki sayfa kasmasın
         setTimeout(() => {
             heart.remove();
         }, 2500);
     }
+  }
+  
 }
   
 </script>
