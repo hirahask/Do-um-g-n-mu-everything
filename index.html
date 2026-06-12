@@ -409,6 +409,96 @@ img:hover {
         opacity: 0;
     }
       }
+  /* --- SİHİRLİ PARMAK İZİ TESTİ TASARIMI --- */
+.scan-section {
+    margin: 50px auto;
+    padding: 25px;
+    background: rgba(255, 192, 203, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 192, 203, 0.1);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.scan-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: pink;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.scan-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+/* Tarama Butonu ve Parmak İzi Alanı */
+.scanner-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px auto;
+    cursor: pointer;
+}
+
+.scanner-circle {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed rgba(255, 192, 203, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    transition: all 0.3s ease;
+    background: rgba(255, 192, 203, 0.05);
+    box-shadow: 0 0 15px rgba(255, 192, 203, 0.1);
+}
+
+/* Tarama yapılırken dönme efekti */
+.scanner-container.scanning .scanner-circle {
+    border-color: pink;
+    animation: spinScanner 2s linear infinite;
+    box-shadow: 0 0 25px rgba(255, 192, 203, 0.5);
+}
+
+@keyframes spinScanner {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.scanner-heart {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    pointer-events: none;
+}
+
+/* Durum ve Yüzde Yazısı */
+.scan-status {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #fff;
+    min-height: 25px;
+    margin-top: 10px;
+}
+
+.scan-result {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: pink;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 192, 203, 0.6);
+    margin-top: 15px;
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+  }
   
 </style>
   
@@ -658,7 +748,19 @@ But I swear, I will always be by your side 🤍
 </div>
 
 <!-- ============================================= -->
-  
+      <div class="scan-section">
+        <div class="scan-title">❤️ LOVE SCANNER ❤️</div>
+        <div class="scan-subtitle">Touch the heart to measure our love connection...</div>
+        
+        <div class="scanner-container" id="scanner" onclick="startLoveScan()">
+            <div class="scanner-circle"></div>
+            <div class="scanner-heart">❤️</div>
+        </div>
+        
+        <div id="scan-status" class="scan-status">Ready to scan...</div>
+        <div id="scan-result" class="scan-result"></div>
+      </div>
+    
 </div>
   
 <audio id="music" loop>
@@ -813,6 +915,58 @@ function releaseLantern() {
         lantern.remove();
     }, 6000);
           }
+  let isScanning = false;
+
+function startLoveScan() {
+    if (isScanning) return; // Eğer zaten tarıyorsa tekrar basılmasın
+    isScanning = true;
+    
+    const scanner = document.getElementById("scanner");
+    const statusText = document.getElementById("scan-status");
+    const resultText = document.getElementById("scan-result");
+    
+    // Tarama efektini başlat
+    scanner.classList.add("scanning");
+    resultText.style.display = "none";
+    
+    let percentage = 0;
+    
+    // Yüzdeyi yavaş yavaş arttıran sayaç
+    const scanInterval = setInterval(() => {
+        percentage += Math.floor(Math.random() * 8) + 2; // Rastgele 2-10 arası artar
+        
+        if (percentage >= 100) {
+            percentage = 100;
+            clearInterval(scanInterval);
+            
+            // Tarama bittiğinde çalışacak alan
+            scanner.classList.remove("scanning");
+            statusText.innerText = "Scan Complete! ✔️";
+            
+            // Büyük aşk sonucunu göster
+            resultText.innerHTML = `
+                💖 %1,000,000 INFINITE LOVE! 💖<br>
+                <span style="color:#fff; font-size:13px; font-weight:normal; display:block; margin-top:8px;">
+                    Our souls are perfectly matched forever and ever. 💍
+                </span>
+            `;
+            resultText.style.display = "block";
+            
+            // Başarı şerefine ekrandan çılgınlar gibi kalpler uçur!
+            for(let i=0; i<3; i++) {
+                setTimeout(createHeartShower, i * 400);
+            }
+            
+            isScanning = false;
+        } else {
+            statusText.innerText = `Scanning Connection... %${percentage}`;
+            // Tarama sırasında da hafif kalpler fırlasın
+            if (percentage % 20 === 0) {
+                createHeartShower();
+            }
+        }
+    }, 150); // Tarama hızını ayarlar (150ms)
+}
   
 </script>
   
