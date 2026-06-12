@@ -384,31 +384,6 @@ img:hover {
     animation: lanternFloat 6s ease-in forwards;
 }
 
-/* Fener Simgesi */
-.flying-lantern::before {
-    content: '🏮';
-    font-size: 26px;
-    filter: drop-shadow(0 0 8px #ff8c00);
-}
-
-/* Fenerlerin gökyüzüne (Yukarı ve sağa/sola hafif sallanarak) gitme animasyonu */
-@keyframes lanternFloat {
-    0% {
-        transform: translateY(105vh) translateX(0) scale(0.6);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    50% {
-        /* Havada rüzgarla hafifçe sağa/sola salınma efekti */
-        transform: translateY(50vh) translateX(20px) scale(0.9);
-    }
-    100% {
-        transform: translateY(-15vh) translateX(-20px) scale(1.1);
-        opacity: 0;
-    }
-      }
   /* --- SİHİRLİ PARMAK İZİ TESTİ TASARIMI --- */
 .scan-section {
     margin: 50px auto;
@@ -738,12 +713,6 @@ But I swear, I will always be by your side 🤍
         <div class="reason-box">
             <button class="magic-btn" onclick="showNextReason()">Why do I love you? ✨</button>
             <div id="reason-text" class="reason-display">Click the button to find out...</div>
-        </div>
-
-        <div class="lantern-section">
-            <div class="lantern-title">🏮 LANTERN FESTIVAL FOR US 🏮</div>
-            <div class="lantern-subtitle">One day, we will release these for real in Thailand. Until then, send a wish to our sky...</div>
-            <button class="lantern-btn" onclick="releaseLantern()">Release a Wish ✨</button>
         </div>
 
         <div class="scan-section">
