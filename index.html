@@ -320,7 +320,96 @@ img:hover {
         opacity: 0;
     }
   }
+/* --- TAYLAND DİLEK FENERİ FESTİVALİ ALANI --- */
+.lantern-section {
+    margin: 60px auto;
+    padding: 25px;
+    background: rgba(255, 140, 0, 0.03); /* Fener renginde hafif sıcak bir parıltı */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 140, 0, 0.1);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
 
+.lantern-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: #ffb366;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.lantern-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.lantern-btn {
+    background: transparent;
+    border: 1px solid #ffb366;
+    color: #ffb366;
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    padding: 12px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.1);
+}
+
+.lantern-btn:hover {
+    background: #ffb366;
+    color: #0a050a;
+    box-shadow: 0 0 20px rgba(255, 179, 102, 0.6);
+}
+
+/* Uçan Dilek Feneri Tasarımı */
+.flying-lantern {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: #ffe6cc;
+    text-shadow: 0 0 10px #ff8c00, 0 0 20px #ff4500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    animation: lanternFloat 6s ease-in forwards;
+}
+
+/* Fener Simgesi */
+.flying-lantern::before {
+    content: '🏮';
+    font-size: 26px;
+    filter: drop-shadow(0 0 8px #ff8c00);
+}
+
+/* Fenerlerin gökyüzüne (Yukarı ve sağa/sola hafif sallanarak) gitme animasyonu */
+@keyframes lanternFloat {
+    0% {
+        transform: translateY(105vh) translateX(0) scale(0.6);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        /* Havada rüzgarla hafifçe sağa/sola salınma efekti */
+        transform: translateY(50vh) translateX(20px) scale(0.9);
+    }
+    100% {
+        transform: translateY(-15vh) translateX(-20px) scale(1.1);
+        opacity: 0;
+    }
+      }
+  
 </style>
   
 <meta charset="UTF-8">
@@ -549,6 +638,12 @@ But I swear, I will always be by your side 🤍
     </div>
 
   </div>
+      <!-- Tayland Dilek Feneri Alanı -->
+    <div class="lantern-section">
+        <div class="lantern-title">🏮 LANTERN FESTIVAL FOR US 🏮</div>
+        <div class="lantern-subtitle">One day, we will release these for real in Thailand. Until then, send a wish to our sky...</div>
+        <button class="lantern-btn" onclick="releaseLantern()">Release a Wish ✨</button>
+    </div>
   
 </div>
   
@@ -670,6 +765,40 @@ function createHeartShower() {
   }
   
 }
+  // Geleceğe dair ortak dilekleriniz ve hayalleriniz
+const futureWishes = [
+    "Holding hands under the real Thailand sky... 🇹🇭",
+    "Chasing the Northern Lights together... 🌌",
+    "Building our warm, happy home... 🏡",
+    "Growing old and wrinkly together... 👵👴",
+    "Traveling to the edges of the world with you... ✈️",
+    "Loving each other more and more every single day... 💖",
+    "Always being your safe haven, forever... 🤍"
+];
+
+let wishIndex = 0;
+
+function releaseLantern() {
+    const lantern = document.createElement('div');
+    lantern.classList.add('flying-lantern');
+    
+    // Sıradaki dileği fenerin altına iliştiriyoruz
+    lantern.innerText = futureWishes[wishIndex];
+    
+    // Fenerin ekranın altından, rastgele bir yatay konumdan çıkmasını sağlıyoruz
+    lantern.style.bottom = '-60px';
+    lantern.style.left = Math.random() * 70 + 15 + 'vw'; // Ekranın kenarlarına çok sıkışmasın diye %15-%85 arası
+    
+    document.body.appendChild(lantern);
+    
+    // Bir sonraki tıklamada diğer dileğe geç, liste bitince başa dön
+    wishIndex = (wishIndex + 1) % futureWishes.length;
+    
+    // Animasyon bitince feneri kaldır (hafıza temizliği)
+    setTimeout(() => {
+        lantern.remove();
+    }, 6000);
+          }
   
 </script>
   
