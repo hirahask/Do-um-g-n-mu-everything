@@ -1,779 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
-  
-<style>
-video.video {
-  width: 80% !important;
-  max-width: 400px !important;
-  height: auto !important;
-  display: block;
-  margin: 20px auto;
-  border-radius: 20px;
-  box-shadow: 0 0 20px pink;
-}
-    
-  .love {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  line-height: 1.8;
-  padding: 40px;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rupesh & Hira</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #120710;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            padding-bottom: 60px;
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 45px;
+            margin: 20px 0;
+            color: #fff;
+        }
+        .love-counter-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            max-width: 300px;
+            margin: 0 auto 20px auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .counter-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        .counter-days {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffb7dd;
+        }
+        
+        /* SLIDER ALANI */
+        .slider-container {
+            position: relative;
+            max-width: 450px;
+            height: 550px;
+            margin: 0 auto 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+        }
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slide .text {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            font-size: 28px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            color: #fff;
+            z-index: 3;
+            padding: 0 10px;
+        }
 
-.signature {
-  font-family: 'Great Vibes', cursive;
-  font-size: 40px;
-  margin-top: 20px;
-  color: pink;
-}
+        h2 {
+            font-size: 18px;
+            font-weight: 400;
+            margin: 30px 0 15px 0;
+            opacity: 0.9;
+        }
 
-body {
-  background: black;
-  color: white;
-  font-family: 'Georgia', serif;
-  overflow-x: hidden;
-}
+        /* YAN YANA FOTOĞRAFLAR (PLACES) */
+        .places-scroll {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .places-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .place-card {
+            flex: 0 0 260px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            scroll-snap-align: center;
+        }
+        .place-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .place-card p {
+            font-size: 12px;
+            padding: 8px 0;
+            opacity: 0.8;
+        }
 
-/* 🎬 Film efekti */
-body::after {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: url("https://i.imgur.com/8fK4h6R.png");
-  opacity: 0.15;
-  pointer-events: none;
-}
+        /* VİDEO ALANI */
+        video {
+            width: 85%;
+            max-width: 350px;
+            border-radius: 15px;
+            margin: 15px auto;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
 
-/* 💖 Kalpler */
-.heart {
-  position: fixed;
-  color: pink;
-  font-size: 20px;
-  animation: float 5s linear infinite;
-  z-index: 999;
-}
+        .main-lyrics {
+            font-size: 14px;
+            font-style: italic;
+            opacity: 0.8;
+            line-height: 1.8;
+            margin: 20px auto;
+            max-width: 320px;
+        }
 
-@keyframes float {
-  0% { transform: translateY(100vh); opacity: 1; }
-  100% { transform: translateY(-10vh); opacity: 0; }
-}
-  /* Animated and romantic background effect */
-body {
-    background: radial-gradient(circle at center, #1a0b1a 0%, #0a050a 100%) !important;
-    position: relative;
-    overflow-x: hidden;
-}
+        /* MEKTUP KUTUSU */
+        .letters-container {
+            margin: 30px 0;
+        }
+        .letters-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .letter-icon {
+            font-size: 32px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .letter-icon:hover {
+            transform: scale(1.2);
+        }
+        #message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 24px;
+            color: #ffb7dd;
+            min-height: 40px;
+            margin: 15px auto;
+            max-width: 320px;
+            padding: 0 10px;
+        }
 
-/* Subtle glowing layout overlay */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: transparent url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 800 800"%3E%3Cg fill="none" stroke="%23ffc0cb" stroke-width="1"%3E%3Ccircle cx="400" cy="400" r="300" stroke-opacity="0.05"/%3E%3Ccircle cx="400" cy="400" r="200" stroke-opacity="0.03"/%3E%3C/g%3E%3C/svg%3E') repeat;
-    z-index: -1;
-    pointer-events: none;
-}
+        /* SÜRPRİZ BÖLÜMLERİ */
+        .surprise-section {
+            max-width: 400px;
+            margin: 40px auto 0 auto;
+            padding: 0 20px;
+        }
+        .music-box, .reason-box, .scan-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-/* Love Counter Styling */
-.love-counter-container {
-    text-align: center;
-    margin: 20px auto;
-    padding: 15px;
-    background: rgba(255, 192, 203, 0.1);
-    border-radius: 15px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 192, 203, 0.2);
-    width: 85%;
-    max-width: 400px;
-}
+        /* DÖNEN PLAK */
+        .vinyl-record {
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, #111 30%, #333 40%, #111 50%, #444 60%, #111 70%);
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            animation: rotateRecord 4s linear infinite;
+            animation-play-state: paused;
+        }
+        .vinyl-record::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 18px;
+            background: #ff477e;
+            border-radius: 50%;
+        }
+        @keyframes rotateRecord {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .lyrics-title {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #ffb7dd;
+        }
+        .lyrics-text {
+            font-size: 12px;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
 
-.counter-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-}
+        /* BUTONLAR */
+        .magic-btn, .lantern-btn {
+            background: linear-gradient(45deg, #ff477e, #ff85a2);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            font-size: 13px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 71, 126, 0.3);
+            transition: transform 0.2s;
+            margin-bottom: 15px;
+        }
+        .magic-btn:active, .lantern-btn:active {
+            transform: scale(0.95);
+        }
+        .reason-display {
+            font-size: 13px;
+            font-style: italic;
+            opacity: 0.8;
+            min-height: 35px;
+        }
 
-.counter-days {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: bold;
-    color: pink;
-    text-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
-}
-
-/* Interaction Button Area below letters */
-.bottom-interaction {
-    text-align: center;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-.heart-button {
-    background: none;
-    border: 2px solid pink;
-    color: pink;
-    padding: 10px 20px;
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 192, 203, 0.2);
-}
-
-.heart-button:hover {
-    background: pink;
-    color: #0a050a;
-    box-shadow: 0 0 15px pink;
-}
-  /* Kalplerin aşağıdan yukarıya doğru uçmasını ve dönmesini sağlayan CSS animasyonu */
-@keyframes floatUp {
-    0% {
-        transform: translateY(105vh) scale(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1; /* Kalpler ekranın altından çıkarken yavaşça belirsin */
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-10vh) scale(1.3) rotate(360deg);
-        opacity: 0; /* Ekranın en üstüne ulaştığında tamamen kaybolsun */
-    }
-}
-
-/* Canlı ve romantik arka plan efekti */
-body {
-    background: radial-gradient(circle at center, #1a0b1a 0%, #0a050a 100%) !important;
-    position: relative;
-    overflow-x: hidden;
-}
-
-/* Sayfaya derinlik katacak hafif parıltı dalgaları */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: transparent url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 800 800"%3E%3Cg fill="none" stroke="%23ffc0cb" stroke-width="1"%3E%3Ccircle cx="400" cy="400" r="300" stroke-opacity="0.05"/%3E%3Ccircle cx="400" cy="400" r="200" stroke-opacity="0.03"/%3E%3C/g%3E%3C/svg%3E') repeat;
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* Sayfadaki tüm fotoğrafların etrafına tatlı bir pembe ışıltı ekler */
-img {
-    border-radius: 20px !important;
-    box-shadow: 0 0 20px rgba(255, 192, 203, 0.4) !important;
-    transition: all 0.3s ease;
-}
-
-/* Fotoğrafların üzerine gelindiğinde hafifçe parlamasını sağlar */
-img:hover {
-    box-shadow: 0 0 25px rgba(255, 192, 203, 0.7) !important;
-}
-
-/* Aşk Sayacı Kutusu Tasarımı */
-.love-counter-container {
-    text-align: center;
-    margin: 20px auto;
-    padding: 15px;
-    background: rgba(255, 192, 203, 0.08) !important;
-    border-radius: 15px !important;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 192, 203, 0.15) !important;
-    width: 85%;
-    max-width: 400px;
-}
-
-.counter-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    color: #eee;
-    margin-bottom: 6px;
-    letter-spacing: 1px;
-}
-
-.counter-days {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: bold;
-    color: pink;
-    text-shadow: 0 0 10px rgba(255, 192, 203, 0.6);
-}
-  /* --- SÜRPRİZ ALANI TASARIMLARI --- */
-.surprise-section {
-    text-align: center;
-    margin: 60px auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 500px;
-}
-
-/* 2. FİKİR: Dönen Müzik Plağı ve Şarkı Sözleri */
-.music-box {
-    margin-bottom: 40px;
-    background: rgba(255, 192, 203, 0.05);
-    padding: 20px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 192, 203, 0.1);
-}
-
-.vinyl-record {
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle, #000 30%, #333 40%, #111 50%, #000 70%);
-    border-radius: 50%;
-    margin: 0 auto 15px auto;
-    position: relative;
-    border: 2px solid pink;
-    box-shadow: 0 0 15px rgba(255, 192, 203, 0.4);
-    /* Plağın sürekli ve yavaşça dönmesini sağlayan animasyon */
-    animation: spinRecord 6s linear infinite;
-}
-
-.vinyl-record::after {
-    content: '🤍';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 14px;
-}
-
-@keyframes spinRecord {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.lyrics-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    color: pink;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.lyrics-text {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 15px;
-    color: #ddd;
-    line-height: 1.8;
-}
-
-/* 3. FİKİR: "Seni Neden Seviyorum" Butonu ve Yazısı */
-.reason-box {
-    margin-top: 30px;
-}
-
-.magic-btn {
-    background: transparent;
-    border: 1px solid pink;
-    color: pink;
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    padding: 12px 25px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 192, 203, 0.1);
-}
-
-.magic-btn:hover {
-    background: pink;
-    color: #0a050a;
-    box-shadow: 0 0 20px pink;
-}
-
-.reason-display {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    color: #fff;
-    margin-top: 20px;
-    min-height: 50px;
-    padding: 0 15px;
-    line-height: 1.6;
-    text-shadow: 0 0 5px rgba(255, 192, 203, 0.3);
-    transition: all 0.3s ease;
-}
-
-/* 1. FİKİR: Ekrandan Yağacak Sihirli Kalplerin Efekti */
-.heart-sparkle {
-    position: fixed;
-    font-size: 24px;
-    pointer-events: none;
-    z-index: 9999;
-    animation: floatUp 2.5s linear forwards;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(100vh) scale(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-10vh) scale(1.2) rotate(360deg);
-        opacity: 0;
-    }
-  }
-/* --- TAYLAND DİLEK FENERİ FESTİVALİ ALANI --- */
-.lantern-section {
-    margin: 60px auto;
-    padding: 25px;
-    background: rgba(255, 140, 0, 0.03); /* Fener renginde hafif sıcak bir parıltı */
-    border-radius: 20px;
-    border: 1px solid rgba(255, 140, 0, 0.1);
-    width: 90%;
-    max-width: 450px;
-    text-align: center;
-}
-
-.lantern-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    color: #ffb366;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-}
-
-.lantern-subtitle {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 13px;
-    color: #aaa;
-    margin-bottom: 20px;
-}
-
-.lantern-btn {
-    background: transparent;
-    border: 1px solid #ffb366;
-    color: #ffb366;
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    padding: 12px 22px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 0 10px rgba(255, 140, 0, 0.1);
-}
-
-.lantern-btn:hover {
-    background: #ffb366;
-    color: #0a050a;
-    box-shadow: 0 0 20px rgba(255, 179, 102, 0.6);
-}
-
-/* Uçan Dilek Feneri Tasarımı */
-.flying-lantern {
-    position: fixed;
-    z-index: 9999;
-    pointer-events: none;
-    font-family: 'Playfair Display', serif;
-    font-size: 13px;
-    color: #ffe6cc;
-    text-shadow: 0 0 10px #ff8c00, 0 0 20px #ff4500;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    white-space: nowrap;
-    animation: lanternFloat 6s ease-in forwards;
-}
-
-  /* --- SİHİRLİ PARMAK İZİ TESTİ TASARIMI --- */
-.scan-section {
-    margin: 50px auto;
-    padding: 25px;
-    background: rgba(255, 192, 203, 0.03);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 192, 203, 0.1);
-    width: 90%;
-    max-width: 450px;
-    text-align: center;
-}
-
-.scan-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    color: pink;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-}
-
-.scan-subtitle {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 12px;
-    color: #aaa;
-    margin-bottom: 25px;
-}
-
-/* Tarama Butonu ve Parmak İzi Alanı */
-.scanner-container {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 20px auto;
-    cursor: pointer;
-}
-
-.scanner-circle {
-    width: 100px;
-    height: 100px;
-    border: 2px dashed rgba(255, 192, 203, 0.4);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    transition: all 0.3s ease;
-    background: rgba(255, 192, 203, 0.05);
-    box-shadow: 0 0 15px rgba(255, 192, 203, 0.1);
-}
-
-/* Tarama yapılırken dönme efekti */
-.scanner-container.scanning .scanner-circle {
-    border-color: pink;
-    animation: spinScanner 2s linear infinite;
-    box-shadow: 0 0 25px rgba(255, 192, 203, 0.5);
-}
-
-@keyframes spinScanner {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.scanner-heart {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 32px;
-    pointer-events: none;
-}
-
-/* Durum ve Yüzde Yazısı */
-.scan-status {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    color: #fff;
-    min-height: 25px;
-    margin-top: 10px;
-}
-
-.scan-result {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: pink;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(255, 192, 203, 0.6);
-    margin-top: 15px;
-    display: none;
-    animation: fadeIn 0.5s ease forwards;
-  }
-  
-</style>
-  
-<meta charset="UTF-8">
-<title>Our Love 💖</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin:0;
-  background:black;
-  color:white;
-  font-family:'Cormorant Garamond', serif;
-  overflow-x:hidden;
-}
-
-/* FILM EFFECT */
-body::after {
-  content:"";
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:url("https://i.imgur.com/o7P3R6E.png");
-  opacity:0.2;
-  pointer-events:none;
-}
-
-/* TITLE */
-h1 {
-  text-align:center;
-  font-family:'Great Vibes', cursive;
-  font-size:45px;
-  margin-top:20px;
-}
-
-/* SLIDER */
-.slide {
-  display:none;
-  position:relative;
-}
-
-.slide img {
-  width:100%;
-  height:70vh;
-  object-fit:cover;
-}
-
-.active {
-  display:block;
-}
-
-.text {
-  position:absolute;
-  bottom:20%;
-  width:100%;
-  text-align:center;
-  font-size:30px;
-  font-family:'Great Vibes', cursive;
-}
-
-/* HEARTS */
-.heart {
-  position:fixed;
-  z-index:999;
-  animation:float 6s linear infinite;
-}
-
-@keyframes float {
-  from { transform:translateY(100vh); opacity:1;}
-  to { transform:translateY(-10vh); opacity:0;}
-}
-
-/* SECTION */
-.section {
-  padding:40px;
-  text-align:center;
-}
-
-/* PLACE (RENKSİZ AMA ŞIK) */
-.place {
-  font-size:25px;
-  margin:15px;
-}
-
-/* LETTERS */
-.letters span {
-  font-size:45px;
-  cursor:pointer;
-  margin:10px;
-}
-
-#message {
-  margin-top:20px;
-  font-size:22px;
-  font-family:'Great Vibes', cursive;
-}
-
-</style>
+        /* AŞK TARAYICI */
+        .scan-title { font-size: 14px; font-weight: 600; color: #ff477e; margin-bottom: 5px; }
+        .scan-subtitle { font-size: 11px; opacity: 0.6; margin-bottom: 20px; }
+        .scanner-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px auto;
+            cursor: pointer;
+        }
+        .scanner-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed rgba(255, 71, 126, 0.4);
+            border-radius: 50%;
+        }
+        .scanner-container.scanning .scanner-circle {
+            animation: rotateRecord 3s linear infinite;
+            border-color: #ff477e;
+        }
+        .scanner-heart {
+            font-size: 35px;
+            line-height: 80px;
+            transition: transform 0.2s;
+        }
+        .scanner-container:active .scanner-heart {
+            transform: scale(0.9);
+        }
+        .scan-status { font-size: 12px; opacity: 0.8; margin-bottom: 5px; }
+        .scan-result { font-size: 14px; font-weight: 600; color: #ffb7dd; display: none; margin-top: 10px; line-height: 1.5; }
+    </style>
 </head>
-
 <body>
 
-<audio id="music" loop>
-<source src="music.mp3">
-</audio>
+    <h1>Rupesh & Hira 🤍</h1>
 
-<h1>Rupesh & Hira 🤍</h1>
-<div class="love-counter-container">
-    <div class="counter-title">Days Since Our First Day</div>
-    <div id="love-days" class="counter-days">0 Days</div>
-</div>
-
-
-<!-- SLIDER -->
-<div class="slide active">
-<img src="IMG_20260611_143512.jpg">
-<div class="text">You are my peace 🤍</div>
-</div>
-
-<div class="slide">
-<img src="IMG-20260611-WA0091.jpg">
-<div class="text">Happy Birthday my squirrel 🐿️</div>
-</div>
-
-<div class="slide">
-<img src="IMG-20260611-WA0092.jpg">
-<div class="text">I love you more every day 💖</div>
-</div>
-
-  <div class="slide">
-  <img src="IMG_20260611_143706.png">
-  <div class="text">My love 💕</div>
-</div>
-
-<div class="slide">
-  <img src="IMG-20260611-WA0104.jpg">
-  <div class="text">My happiness 💖</div>
-</div>
-  
-<!-- PLACES (STYLISH TEXT) -->
-<div class="section" style="overflow: hidden;">
-<h2>Places We Will Go 🌍</h2>
-
-<!-- Yan yana pürüzsüz kaydırma şeridi -->
-<div style="display: flex; gap: 15px; overflow-x: auto; padding: 15px 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch;">
-    
-    <!-- Finland -->
-    <div style="flex: 0 0 65%; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <img src="finland.jpg" alt="Finland" style="width: 100% !important; height: 160px !important; object-fit: cover !important; border-radius: 15px !important; box-shadow: 0 0 15px rgba(255, 192, 203, 0.3) !important;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 13px; color: #ddd; margin-top: 8px;">Finland ❄️</div>
+    <div class="love-counter-container">
+        <div class="counter-title">Days Since Our First Day</div>
+        <div id="love-days" class="counter-days">0 Days</div>
     </div>
 
-    <!-- Maldives -->
-    <div style="flex: 0 0 65%; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <img src="Maldives.jpg" alt="Maldives" style="width: 100% !important; height: 160px !important; object-fit: cover !important; border-radius: 15px !important; box-shadow: 0 0 15px rgba(255, 192, 203, 0.3) !important;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 13px; color: #ddd; margin-top: 8px;">Maldives 🌊</div>
+    <div class="slider-container">
+        <div class="slide active">
+            <img src="IMG_20260611_143512.jpg" alt="Couple 1">
+            <div class="text">You are my peace 🤍</div>
+        </div>
+        <div class="slide">
+            <img src="IMG_20260611-WA0091.jpg" alt="Couple 2">
+            <div class="text">Happy Birthday my squirrel 🐿️🥰</div>
+        </div>
+        <div class="slide">
+            <img src="IMG_20260611-WA0092.jpg" alt="Couple 3">
+            <div class="text">I love you more and more every day.</div>
+        </div>
+        <div class="slide">
+            <img src="IMG_20260611_143706.png" alt="Couple 4">
+            <div class="text">My love 💕</div>
+        </div>
+        <div class="slide">
+            <img src="IMG_20260611-WA0104.jpg" alt="Couple 5">
+            <div class="text">My happiness 💖</div>
+        </div>
     </div>
 
-    <!-- France -->
-    <div style="flex: 0 0 65%; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <img src="france.jpg" alt="France" style="width: 100% !important; height: 160px !important; object-fit: cover !important; border-radius: 15px !important; box-shadow: 0 0 15px rgba(255, 192, 203, 0.3) !important;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 13px; color: #ddd; margin-top: 8px;">France 🗼</div>
+    <h2>Places We Will Go 🌍</h2>
+    <div class="places-scroll">
+        <div class="place-card">
+            <img src="finland.jpg" alt="Finland">
+            <p>Finland ❄️</p>
+        </div>
+        <div class="place-card">
+            <img src="Maldives.jpg" alt="Maldives">
+            <p>Maldives 🌊</p>
+        </div>
+        <div class="place-card">
+            <img src="france.jpg" alt="France">
+            <p>France 🗼</p>
+        </div>
+        <div class="place-card">
+            <img src="swiss.jpg" alt="Switzerland">
+            <p>Switzerland 🏔️</p>
+        </div>
+        <div class="place-card">
+            <img src="japan.jpg" alt="Japan">
+            <p>Japan 🌸</p>
+        </div>
     </div>
 
-    <!-- Switzerland -->
-    <div style="flex: 0 0 65%; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <img src="swiss.jpg" alt="Switzerland" style="width: 100% !important; height: 160px !important; object-fit: cover !important; border-radius: 15px !important; box-shadow: 0 0 15px rgba(255, 192, 203, 0.3) !important;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 13px; color: #ddd; margin-top: 8px;">Switzerland 🏔️</div>
+    <h2>One Day 🎬</h2>
+    <video controls autoplay loop muted playsinline>
+        <source src="1000249777.mp4" type="video/mp4">
+    </video>
+
+    <div class="main-lyrics">
+        I love you more and more every day.<br>
+        Sometimes we will cry together, sometimes we will laugh together...<br><br>
+        <strong>But I swear, I will always be by your side 🤍</strong>
     </div>
 
-    <!-- Japan -->
-    <div style="flex: 0 0 65%; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <img src="japan.jpg" alt="Japan" style="width: 100% !important; height: 160px !important; object-fit: cover !important; border-radius: 15px !important; box-shadow: 0 0 15px rgba(255, 192, 203, 0.3) !important;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 13px; color: #ddd; margin-top: 8px;">Japan 🌸</div>
+    <div class="letters-container">
+        <div class="letters-grid">
+            <span class="letter-icon" onclick="showMessage()">✉️</span>
+            <span class="letter-icon" onclick="showMessage()">✉️</span>
+            <span class="letter-icon" onclick="showMessage()">✉️</span>
+            <span class="letter-icon" onclick="showMessage()">✉️</span>
+            <span class="letter-icon" onclick="showMessage()">✉️</span>
+        </div>
+        <div id="message">Click a letter to read a note...</div>
     </div>
-
-</div>
-  
-</div>
-  
-<!-- VIDEO -->
-<div class="section">
-  <h2> One Day 🎬</h2>
-
-  <video controls autoplay loop muted class="video">
-    <source src="video.mp4" type="video/mp4">
-  </video>
-</div>
-
-<!-- LOVE TEXT BURAYA -->
-<div class="section love">
-<p>
-I love you more and more every day.<br><br>
-
-Sometimes we will cry together, sometimes we will laugh together…<br><br>
-
-But I swear, I will always be by your side 🤍
-</p>
-
-<div class="signature">Rupesh & Hira 🤍</div>
-</div>
-
-<!-- LETTER SURPRISE -->
-<div class="section">
-<h2>Open a Letter 💌</h2>
-
-<div class="letters">
-<span onclick="showMessage()">💌</span>
-<span onclick="showMessage()">💌</span>
-<span onclick="showMessage()">💌</span>
-<span onclick="showMessage()">💌</span>
-<span onclick="showMessage()">💌</span>
-</div>
-
-<div id="message"></div>
-
-  <div class="surprise-section">
-    
-<!-- === MEKTUP KUTUSUNUN DIŞINDAKİ SÜRPRİZ ALANI === -->
-
-                        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-            heart.style.pointerEvents = 'none';
-            heart.style.zIndex = '9999';
-            heart.style.animation = 'floatUp 2.5s linear forwards';
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 2500);
-        }
-    }
-
-
-
-    // --- LOVE SCANNER ---
-    let isScanning = false;
-    function startLoveScan() {
-        if (isScanning) return;
-        isScanning = true;
-        const scanner = document.getElementById("scanner");
-        const statusText = document.getElementById("scan-status");
-        const resultText = document.getElementById("scan-result");
-        
-        scanner.classList.add("scanning");
-        if (resultText) resultText.style.display = "none";
-        let percentage = 0;
-        
-        const scanInterval = setInterval(() => {
-            percentage += Math.floor(Math.random() * 8) + 2;
-            if (percentage >= 100) {
-                percentage = 100;
-                clearInterval(scanInterval);
-                scanner.classList.remove("scanning");
-                if (statusText) statusText.innerText = "Scan Complete! ✔️";
-                if (resultText) {
-                    resultText.innerHTML = `💖 %1,000,000 INFINITE LOVE! 💖<br><span style="color:#fff; font-size:13px; font-weight:normal; display:block; margin-top:8px;">Our souls are perfectly matched forever and ever. 💍</span>`;
-                    resultText.style.display = "block";
-                }
-                for(let i=0; i<3; i++) { setTimeout(createHeartShower, i * 400); }
-                isScanning = false;
-            } else {
-                if (statusText) statusText.innerText = `Scanning Connection... %${percentage}`;
-                if (percentage % 20 === 0) { createHeartShower(); }
-            }
-        }, 150);
-    }
-      // --- BÜYÜK FOTOĞRAFLARIN (SLIDER) OTOMATİK DÖNMESİ ---
-let currentSlideIndex = 0;
-const slides = document.querySelectorAll(".slide");
-
-function showNextSlide() {
-    if (slides.length === 0) return;
-    
-    // Mevcut aktif slayttan "active" sınıfını kaldırır
-    slides[currentSlideIndex].classList.remove("active");
-    
-    // Bir sonraki slayta geçer, liste bitince başa döner
-    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-    
-    // Yeni slayta "active" sınıfını ekleyerek görünür yapar
-    slides[currentSlideIndex].classList.add("active");
-}
-
-// Fotoğrafların her 3 saniyede (3000 milisaniye) bir kendiliğinden değişmesini sağlar
-setInterval(showNextSlide, 3000);
-      
-    </script>
-</body>
-  </html>
-    
-    
-</div>
-  
-<audio id="music" loop>
-  <source src="muzik.mp3" type="audio/mpeg">
-</audio>
-  
-<script>
-
-/* MUSIC */
-
-     <div id="message"></div>
 
     <div class="surprise-section">
 
@@ -812,155 +401,152 @@ setInterval(showNextSlide, 3000);
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
-<script>
-const messages = [
-    "I look at you and see the rest of my life in your eyes.",
-    "You are my safe haven in this chaotic world, sevgilim.",
-    "My heart is, and always will be, yours.",
-    "You are the best thing that has ever been mine.",
-    "Sometimes I look at you and wonder how I got so lucky.",
-    "You became the calm to my storm, the light in my darkest nights."
-];
-
-function showMessage() {
-    let random = messages[Math.floor(Math.random() * messages.length)];
-    const msgElement = document.getElementById("message");
-    if (msgElement) {
-        msgElement.innerText = random;
-    }
-}
-
-function updateLoveCounter() {
-    const startDate = new Date("2026-02-12T00:00:00");
-    const today = new Date();
-    const timeDiff = today - startDate;
-    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    
-    const counterElement = document.getElementById("love-days");
-    if (counterElement) {
-        counterElement.innerText = daysDiff + " Days";
-    }
-}
-updateLoveCounter();
-
-// --- BÜYÜK FOTOĞRAFLARIN (SLIDER) OTOMATİK DÖNME MOTORU ---
-let currentSlideIndex = 0;
-const slides = document.querySelectorAll(".slide");
-
-function showNextSlide() {
-    if (slides.length === 0) return;
-    slides[currentSlideIndex].classList.remove("active");
-    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-    slides[currentSlideIndex].classList.add("active");
-}
-if (slides.length > 0) {
-    setInterval(showNextSlide, 3000); // Slaytlar her 3 saniyede bir otomatik döner
-}
-
-// --- ARKA PLAN MÜZİK KONTROLÜ ---
-function toggleMusic() {
-    const audio = document.getElementById("music");
-    const record = document.querySelector(".vinyl-record");
-    
-    if (audio.paused) {
-        audio.play().catch(err => console.log("Müzik başlatılamadı."));
-        if (record) record.style.animationPlayState = "running";
-    } else {
-        audio.pause();
-        if (record) record.style.animationPlayState = "paused";
-    }
-}
-
-// İlk tıklamada müziği otomatik tetikleme garantisi
-document.addEventListener('click', function() {
-    const audio = document.getElementById("music");
-    if (audio && audio.paused) {
-        audio.play().catch(e => {});
-    }
-}, { once: true });
-
-
-// --- 1. BUTON: SENİ NEDEN SEVİYORUM VE EN ÜST KATMAN KALPLER ---
-const loveReasons = [
-    "I love you because you are the only place where I find true peace... 🤍",
-    "Because your smile is my absolute favorite view in the whole world... 🌸",
-    "Because even in a room full of people, my eyes will always look for you... ✨",
-    "Because you are my best friend, my husband, and my everything... 💍",
-    "We balance each other perfectly, just like fire and water... 🔥💧"
-];
-let currentReasonIndex = 0;
-
-function showNextReason() {
-    const reasonDisplay = document.getElementById("reason-text");
-    if (reasonDisplay) {
-        reasonDisplay.innerText = loveReasons[currentReasonIndex];
-    }
-    createHeartShower();
-    currentReasonIndex = (currentReasonIndex + 1) % loveReasons.length;
-}
-
-function createHeartShower() {
-    const heartSymbols = ['❤️', '💖', '🤍', '✨', '💕', '⭐'];
-    for (let i = 0; i < 25; i++) {
-        const heart = document.createElement('div');
-        heart.style.position = 'fixed';
-        heart.style.bottom = '-50px'; 
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDelay = Math.random() * 0.6 + 's';
-        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-        heart.style.pointerEvents = 'none';
-        
-        // Fotoğrafların, videoların ve mektupların kesinlikle üstünde uçması için en yüksek katman:
-        heart.style.zIndex = '999999'; 
-        
-        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-        
-        heart.animate([
-            { transform: 'translateY(0) scale(1)', opacity: 1 },
-            { transform: 'translateY(-105vh) scale(1.3)', opacity: 0 }
-        ], {
-            duration: 2500,
-            easing: 'linear',
-            fill: 'forwards'
-        });
-
-        document.body.appendChild(heart);
-        setTimeout(() => { heart.remove(); }, 2500);
-    }
-}
-
-// --- 2. BUTON: SİHİRLİ AŞK TARAYICI ---
-let isScanning = false;
-function startLoveScan() {
-    if (isScanning) return;
-    isScanning = true;
-    const scanner = document.getElementById("scanner");
-    const statusText = document.getElementById("scan-status");
-    const resultText = document.getElementById("scan-result");
-    
-    if (scanner) scanner.classList.add("scanning");
-    if (resultText) resultText.style.display = "none";
-    let percentage = 0;
-    
-    const scanInterval = setInterval(() => {
-        percentage += Math.floor(Math.random() * 8) + 2;
-        if (percentage >= 100) {
-            percentage = 100;
-            clearInterval(scanInterval);
-            if (scanner) scanner.classList.remove("scanning");
-            if (statusText) statusText.innerText = "Scan Complete! ✔️";
-            if (resultText) {
-                resultText.innerHTML = `💖 %1,000,000 INFINITE LOVE! 💖<br><span style="color:#fff; font-size:13px; font-weight:normal; display:block; margin-top:8px;">Our souls are perfectly matched forever and ever. 💍</span>`;
-                resultText.style.display = "block";
-            }
-            for(let i=0; i<3; i++) { setTimeout(createHeartShower, i * 400); }
-            isScanning = false;
-        } else {
-            if (statusText) statusText.innerText = `Scanning Connection... %${percentage}`;
-            if (percentage % 20 === 0) { createHeartShower(); }
+    <script>
+        // Sayaç Motoru
+        function updateLoveCounter() {
+            const startDate = new Date("2026-02-12T00:00:00");
+            const today = new Date();
+            const timeDiff = today - startDate;
+            const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const counterElement = document.getElementById("love-days");
+            if (counterElement) counterElement.innerText = daysDiff + " Days";
         }
-    }, 150);
-}
-</script>
+        updateLoveCounter();
+
+        // Büyük Fotoğraf Geçiş Motoru (Slayt)
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+        function showNextSlide() {
+            if (slides.length === 0) return;
+            slides[currentSlideIndex].classList.remove("active");
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            slides[currentSlideIndex].classList.add("active");
+        }
+        if (slides.length > 0) {
+            setInterval(showNextSlide, 3000);
+        }
+
+        // Mektup Mesajları Motoru
+        const messages = [
+            "I look at you and see the rest of my life in your eyes.",
+            "You are my safe haven in this chaotic world, sevgilim.",
+            "My heart is, and always will be, yours.",
+            "You are the best thing that has ever been mine.",
+            "Sometimes I look at you and wonder how I got so lucky.",
+            "You became the calm to my storm, the light in my darkest nights."
+        ];
+        function showMessage() {
+            let random = messages[Math.floor(Math.random() * messages.length)];
+            const msgElement = document.getElementById("message");
+            if (msgElement) msgElement.innerText = random;
+            createHeartShower();
+        }
+
+        // Müzik Çalar Motoru
+        function toggleMusic() {
+            const audio = document.getElementById("music");
+            const record = document.querySelector(".vinyl-record");
+            if (!audio) return;
+            
+            if (audio.paused) {
+                audio.play().catch(err => console.log("Müzik çalma engellendi."));
+                if (record) record.style.animationPlayState = "running";
+            } else {
+                audio.pause();
+                if (record) record.style.animationPlayState = "paused";
+            }
+        }
+
+        // Tarayıcıların müzik engellemesini aşmak için ilk dokunuşta tetikleme
+        document.addEventListener('click', function() {
+            const audio = document.getElementById("music");
+            if (audio && audio.paused) {
+                audio.play().catch(e => {});
+                const record = document.querySelector(".vinyl-record");
+                if (record) record.style.animationPlayState = "running";
+            }
+        }, { once: true });
+
+        // Neden Seviyorum Motoru
+        const loveReasons = [
+            "I love you because you are the only place where I find true peace... 🤍",
+            "Because your smile is my absolute favorite view in the whole world... 🌸",
+            "Because even in a room full of people, my eyes will always look for you... ✨",
+            "Because you are my best friend, my husband, and my everything... 💍",
+            "We balance each other perfectly, just like fire and water... 🔥💧"
+        ];
+        let currentReasonIndex = 0;
+        function showNextReason() {
+            const reasonDisplay = document.getElementById("reason-text");
+            if (reasonDisplay) reasonDisplay.innerText = loveReasons[currentReasonIndex];
+            createHeartShower();
+            currentReasonIndex = (currentReasonIndex + 1) % loveReasons.length;
+        }
+
+        // EN ÜST KATMAN KALP YAĞMURU MOTORU
+        function createHeartShower() {
+            const heartSymbols = ['❤️', '💖', '🤍', '✨', '💕', '⭐'];
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.style.position = 'fixed';
+                heart.style.bottom = '-50px'; 
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 0.6 + 's';
+                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                heart.style.pointerEvents = 'none';
+                
+                // === EN KRİTİK DÜZELTME GELDİ: Tüm resim, video ve elementlerin en önünde uçması için: ===
+                heart.style.zIndex = '999999'; 
+                
+                heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                
+                heart.animate([
+                    { transform: 'translateY(0) scale(1)', opacity: 1 },
+                    { transform: 'translateY(-105vh) scale(1.3)', opacity: 0 }
+                ], {
+                    duration: 2500,
+                    easing: 'linear',
+                    fill: 'forwards'
+                });
+
+                document.body.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 2500);
+            }
+        }
+
+        // Aşk Tarayıcı Motoru
+        let isScanning = false;
+        function startLoveScan() {
+            if (isScanning) return;
+            isScanning = true;
+            const scanner = document.getElementById("scanner");
+            const statusText = document.getElementById("scan-status");
+            const resultText = document.getElementById("scan-result");
+            
+            if (scanner) scanner.classList.add("scanning");
+            if (resultText) resultText.style.display = "none";
+            let percentage = 0;
+            
+            const scanInterval = setInterval(() => {
+                percentage += Math.floor(Math.random() * 8) + 2;
+                if (percentage >= 100) {
+                    percentage = 100;
+                    clearInterval(scanInterval);
+                    if (scanner) scanner.classList.remove("scanning");
+                    if (statusText) statusText.innerText = "Scan Complete! ✔️";
+                    if (resultText) {
+                        resultText.innerHTML = `💖 %1,000,000 INFINITE LOVE! 💖<br><span style="color:#fff; font-size:12px; font-weight:normal; display:block; margin-top:8px;">Our souls are perfectly matched forever and ever. 💍</span>`;
+                        resultText.style.display = "block";
+                    }
+                    for(let i=0; i<3; i++) { setTimeout(createHeartShower, i * 400); }
+                    isScanning = false;
+                } else {
+                    if (statusText) statusText.innerText = `Scanning Connection... %${percentage}`;
+                    if (percentage % 20 === 0) { createHeartShower(); }
+                }
+            }, 150);
+        }
+    </script>
 </body>
-</html>
+                                                             </html>
+          
