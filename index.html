@@ -59,6 +59,78 @@ body::after {
   0% { transform: translateY(100vh); opacity: 1; }
   100% { transform: translateY(-10vh); opacity: 0; }
 }
+  /* Animated and romantic background effect */
+body {
+    background: radial-gradient(circle at center, #1a0b1a 0%, #0a050a 100%) !important;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Subtle glowing layout overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: transparent url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 800 800"%3E%3Cg fill="none" stroke="%23ffc0cb" stroke-width="1"%3E%3Ccircle cx="400" cy="400" r="300" stroke-opacity="0.05"/%3E%3Ccircle cx="400" cy="400" r="200" stroke-opacity="0.03"/%3E%3C/g%3E%3C/svg%3E') repeat;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Love Counter Styling */
+.love-counter-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 15px;
+    background: rgba(255, 192, 203, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 192, 203, 0.2);
+    width: 85%;
+    max-width: 400px;
+}
+
+.counter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.counter-days {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: pink;
+    text-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
+}
+
+/* Interaction Button Area below letters */
+.bottom-interaction {
+    text-align: center;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.heart-button {
+    background: none;
+    border: 2px solid pink;
+    color: pink;
+    padding: 10px 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 192, 203, 0.2);
+}
+
+.heart-button:hover {
+    background: pink;
+    color: #0a050a;
+    box-shadow: 0 0 15px pink;
+}
+  
 </style>
   
 <meta charset="UTF-8">
@@ -165,6 +237,11 @@ h1 {
 </audio>
 
 <h1>Rupesh & Hira 🤍</h1>
+<div class="love-counter-container">
+    <div class="counter-title">Days Since Our First Day</div>
+    <div id="love-days" class="counter-days">0 Days</div>
+</div>
+
 
 <!-- SLIDER -->
 <div class="slide active">
@@ -311,5 +388,27 @@ document.getElementById("message").innerText=random;
 }
 
 </script>
+function updateLoveCounter() {
+    // First meeting date set exactly to: February 12, 2026
+    const startDate = new Date("2026-02-12T00:00:00"); 
+    const today = new Date();
+    
+    const timeDiff = today - startDate;
+    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    
+    document.getElementById("love-days").innerText = daysDiff + " Days";
+}
+
+// Action when the button below the letters is clicked
+function showLoveMessage() {
+    alert("Every single day, I am so grateful to have you by my side... ❤️");
+}
+
+// Execute the counter when the page loads
+window.onload = function() {
+    updateLoveCounter();
+}
+  </script>
+  
 </body>
 </html>
