@@ -353,6 +353,41 @@
         </div>
     </div>
 </div>
+    <!-- KADER DÜĞÜMÜ ALANI -->
+<div id="knot-container" style="position: relative; height: 300px; margin: 40px auto; touch-action: none;">
+    <canvas id="knotCanvas"></canvas>
+    <div style="position: absolute; top: 40%; width: 100%; pointer-events: none; font-family: 'Great Vibes'; font-size: 24px; color: #d4af37;">
+        R & H - Linked by Fate
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById('knotCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = 300; canvas.height = 300;
+
+function drawKnot(x, y) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = '#d4af37'; // Altın rengi
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    
+    // Sonsuzluk düğümü benzeri zarif bir eğri
+    for (let i = 0; i < Math.PI * 4; i += 0.1) {
+        let posX = 150 + Math.cos(i) * 80;
+        let posY = 150 + Math.sin(i * 2) * 40;
+        ctx.lineTo(posX, posY);
+    }
+    ctx.stroke();
+    
+    // İsimlerin baş harfleri
+    ctx.fillStyle = '#ffb7dd';
+    ctx.font = '20px Arial';
+    ctx.fillText('R', 70, 150);
+    ctx.fillText('H', 230, 150);
+}
+drawKnot();
+</script>
     
     <body>
 
