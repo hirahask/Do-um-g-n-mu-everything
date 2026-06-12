@@ -6,24 +6,33 @@
     <title>Rupesh & Hira</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        .seal-container { margin: 60px auto; text-align: center; }
+        /* MİSTİK BORDO MÜHÜR */
+.seal-container { margin: 80px auto; text-align: center; position: relative; }
 .seal {
-    width: 60px; height: 60px; background: #8b0000; border-radius: 50%;
-    margin: 0 auto; cursor: pointer; border: 3px solid #ffd700;
+    width: 70px; height: 70px; background: #5d0707; /* Bordo */
+    border-radius: 50%; margin: 0 auto; cursor: pointer;
+    border: 3px double #d4af37; /* Altın rengi çerçeve */
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5); transition: transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s;
 }
-.seal:hover { transform: scale(1.1); }
-.seal-inner { color: #ffd700; font-family: 'Great Vibes', cursive; font-size: 14px; }
+.seal:hover { transform: scale(1.05); }
+.seal-inner { color: #d4af37; font-family: 'Great Vibes', cursive; font-size: 16px; }
 
+/* YIRTIK KENARLI ESKİ PARŞÖMEN */
 .scroll-paper {
-    max-width: 300px; margin: 20px auto; background: #e3c79a;
-    padding: 20px; border-radius: 5px; height: 0; overflow: hidden;
-    transition: height 1.5s ease-in-out; border: 2px solid #a07d4b;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3); position: relative;
+    max-width: 320px; margin: 20px auto; background: #e3c79a;
+    padding: 25px; height: 0; overflow: hidden;
+    transition: height 1.5s ease-in-out;
+    position: relative;
+    border-top: 10px solid transparent; border-bottom: 10px solid transparent;
+    /* Yırtık kenar efekti */
+    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M0 20 L2 0 L4 20 L6 0 L8 20 L10 0 L12 20 L14 0 L16 20 L18 0 L20 20" fill="%23e3c79a"/></svg>') 10 repeat;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
 }
-.scroll-content { color: #3e2723; font-family: 'Georgia', serif; font-size: 13px; line-height: 1.6; opacity: 0; transition: opacity 2s; }
-
+.scroll-content { 
+    color: #4a3423; font-family: 'Georgia', serif; font-size: 14px; 
+    line-height: 1.8; opacity: 0; transition: opacity 2s; text-align: center;
+}
         
         * {
             box-sizing: border-box;
@@ -307,19 +316,15 @@
 </head>
 <div class="seal-container">
     <div class="seal" onclick="openScroll()">
-        <div class="seal-inner"><span>R & H</span></div>
+        <div class="seal-inner">R & H</div>
     </div>
     <div id="scroll-paper" class="scroll-paper">
         <div class="scroll-content">
-            <p>I don’t love you as if you were a rose of salt, topaz,<br>
+            <p style="font-style: italic;">I don’t love you as if you were a rose of salt, topaz,<br>
             or arrow of carnations that propagate fire:<br>
             I love you as one loves certain obscure things,<br>
-            secretly, between the shadow and the soul.<br><br>
-            I love you as the plant that doesn’t bloom but carries<br>
-            the light of those flowers, hidden, within itself,<br>
-            and thanks to your love the tight aroma that arose<br>
-            from the earth lives dimly in my body.<br><br>
-            I love you without knowing how, or when, or from where,<br>
+            secretly, between the shadow and the soul...</p>
+            <p>I love you without knowing how, or when, or from where,<br>
             I love you directly without problems or pride:<br>
             I love you like this because I don’t know any other way to love,<br>
             except in this form in which I am not nor are you,<br>
