@@ -389,19 +389,26 @@ document.getElementById("message").innerText=random;
 
 </script>
   
-</script>
+<script>
 function updateLoveCounter() {
-    // First meeting date set exactly to: February 12, 2026
-    const startDate = new Date("2026-02-12T00:00:00"); 
-    const today = new Date("2026-06-13T00:00:00");
+    // Mobil cihazların hatasız okuması için en güvenli format
+    var startDate = new Date("2026/02/12 00:00:00"); 
+    var today = new Date();
     
-    const timeDiff = today - startDate;
-    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    var timeDiff = today.getTime() - startDate.getTime();
+    var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
     
-    document.getElementById("love-days").innerText = daysDiff + " Days";
+    if (!isNaN(daysDiff)) {
+        document.getElementById("love-days").innerText = daysDiff + " Days";
+    }
 }
+
+// Sayfa yüklendiği an sayacı çalışmaya zorlar
+document.addEventListener("DOMContentLoaded", function() {
+    updateLoveCounter();
+});
+</script>
   
-  </script>
   
 </body>
 </html>
